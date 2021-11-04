@@ -1,5 +1,5 @@
 {
-  "name": "simpletasks",
+  "name": "charm",
   "author": "@fredmaiaarantes",
   "private": true,
   "scripts": {
@@ -20,7 +20,10 @@
     "meteor-node-stubs": "^1.0.3",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
+    "react-helmet": "^6.1.0",
+    "react-router-dom": "^5.2.0",
     "simpl-schema": "^1.10.2",
+    "history": "^5.0.0",
     "yup": "^0.32.9"
   },
   "meteor": {

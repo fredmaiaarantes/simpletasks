@@ -1,7 +1,7 @@
 # Simple Tasks with Meteor
 Stack: [Meteor](https://meteor.com), [Chakra UI](https://chakra-ui.com/), React, [Formik](https://formik.org/), MongoDB
 
-Demo: https://simpletasks.meteorapp.com/
+Demo: https://charm.meteorapp.com/
 
 Author: [@fredmaiaarantes](https://twitter.com/fredmaiaarantes)
 
