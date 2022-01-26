@@ -40,7 +40,7 @@ export const Navbar = ({ user }) => {
               bgGradient="linear(to-l, #675AAA, #4399E1)"
               bgClip="text"
             >
-              Simple Tasks
+              Charm
             </Text>
           </Text>
         </Flex>
