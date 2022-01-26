@@ -1,11 +1,23 @@
 import React from 'react';
 import { Meteor } from 'meteor/meteor';
-import { Box, ChakraProvider, ColorModeScript, Stack } from '@chakra-ui/react';
-import theme from '../../client/theme';
+import {
+  Box,
+  ChakraProvider,
+  ColorModeScript,
+  Stack,
+  extendTheme,
+} from '@chakra-ui/react';
 import { useTracker } from 'meteor/react-meteor-data';
 import { Tasks } from './tasks/Tasks';
 import { LoginForm } from './auth/LoginForm';
 import { Navbar } from './Navbar';
+
+const theme = extendTheme({
+  config: {
+    initialColorMode: 'dark',
+    useSystemColorMode: false,
+  },
+});
 
 export const App = () => {
   const user = useTracker(() => Meteor.user());

@@ -28,8 +28,8 @@
   },
   "meteor": {
     "mainModule": {
-      "client": "client/main.js",
-      "server": "server/main.js"
+      "client": "app/main.client.js",
+      "server": "app/main.server.js"
     }
   },
   "husky": {
