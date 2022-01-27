@@ -11,11 +11,11 @@ import {
   HStack,
 } from '@chakra-ui/react';
 import { Task } from './Task';
-import { TasksCollection } from '../../model/TasksCollection';
+import { TasksCollection } from '../../collections/tasksCollection';
 import { TaskForm } from './TaskForm';
 import { useTracker } from 'meteor/react-meteor-data';
 
-const markAsDone = ({ _id, done }) => Meteor.call('tasks.setDone', _id, !done);
+const markAsDone = ({ _id }) => Meteor.call('tasks.toggleDone', _id);
 
 const deleteTask = ({ _id }) => Meteor.call('tasks.remove', _id);
 
