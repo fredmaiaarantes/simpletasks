@@ -1,6 +1,6 @@
 import { Meteor } from 'meteor/meteor';
 import { check } from 'meteor/check';
-import { TasksCollection } from '../collections/tasksCollection';
+import { TasksCollection } from './tasks.collection';
 
 Meteor.methods({
   'tasks.insert'(description) {
@@ -9,7 +9,11 @@ Meteor.methods({
     if (!this.userId) {
       throw new Meteor.Error('Error adding task', 'Not authorized.');
     }
-    TasksCollection.insert({ description });
+    TasksCollection.insert({
+      description,
+      userId: this.userId,
+      createdAt: new Date(),
+    });
   },
 
   'tasks.remove'(taskId) {

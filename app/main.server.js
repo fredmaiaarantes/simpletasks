@@ -1,7 +1,7 @@
 import { Meteor } from 'meteor/meteor';
 import { Accounts } from 'meteor/accounts-base';
-import './methods/tasksMethods';
-import './publications/tasksPublications';
+import './tasks/tasks.methods';
+import './tasks/tasks.publications';
 
 const SEED_USERNAME = 'fredmaiaarantes';
 const SEED_PASSWORD = 'abc123';

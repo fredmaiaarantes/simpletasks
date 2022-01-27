@@ -34,3 +34,8 @@ meteor
 ```bash
 meteor deploy <select a subdomain>.meteorapp.com --free --mongo
 ```
+
+## To Do
+- Define directory structure
+- Extend users collection
+- Add migrations

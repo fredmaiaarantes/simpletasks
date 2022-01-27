@@ -10,7 +10,7 @@ import {
 import { useTracker } from 'meteor/react-meteor-data';
 import { Tasks } from './tasks/Tasks';
 import { LoginForm } from './auth/LoginForm';
-import { Navbar } from './Navbar';
+import { Navbar } from './common/Navbar';
 
 const theme = extendTheme({
   config: {
