@@ -46,6 +46,7 @@ export const Navbar = () => {
             color={useColorModeValue('gray.800', 'white')}
           >
             <Link
+              href={RoutePaths.ROOT}
               bgGradient="linear(to-l, #675AAA, #4399E1)"
               bgClip="text"
               onClick={() => navigate(RoutePaths.ROOT)}
@@ -61,7 +62,10 @@ export const Navbar = () => {
           direction="row"
           spacing={6}
         >
-          <Button onClick={toggleColorMode}>
+          <Button
+            onClick={toggleColorMode}
+            aria-label={colorMode === 'light' ? 'Moon Icon' : 'Sun Icon'}
+          >
             {colorMode === 'light' ? <MoonIcon /> : <SunIcon />}
           </Button>
           {user && (
