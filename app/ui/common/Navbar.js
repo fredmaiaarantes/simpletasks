@@ -51,7 +51,7 @@ export const Navbar = () => {
               bgClip="text"
               onClick={() => navigate(RoutePaths.ROOT)}
             >
-              Charm
+              Simple Tasks
             </Link>
           </Text>
         </Flex>
