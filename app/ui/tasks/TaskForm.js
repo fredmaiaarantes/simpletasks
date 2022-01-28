@@ -1,6 +1,5 @@
 import React from 'react';
 import { Meteor } from 'meteor/meteor';
-import * as yup from 'yup';
 import {
   FormControl,
   Input,
@@ -10,14 +9,15 @@ import {
   InputGroup,
   InputRightElement,
 } from '@chakra-ui/react';
+import { object, string } from 'yup';
 import { useFormik } from 'formik';
 import { ErrorStatus } from '../common/ErrorStatus';
 
 export const TaskForm = () => {
-  const validationSchema = yup.object({
-    description: yup
-      .string('Enter task description')
-      .required('Task description is required'),
+  const validationSchema = object({
+    description: string('Enter task description').required(
+      'Task description is required'
+    ),
   });
 
   const onSubmit = (values, actions) => {

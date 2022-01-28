@@ -1,4 +1,6 @@
-# Simple Tasks with Meteor
+# Charm - Simple Tasks
+Built with my new preferred stack: CHARM (Chakra-UI, React, Meteor).
+
 Stack: [Meteor](https://meteor.com), [Chakra UI](https://chakra-ui.com/), React, [Formik](https://formik.org/), MongoDB
 
 Demo: https://simpletasks.meteorapp.com/

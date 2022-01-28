@@ -1,6 +1,5 @@
 import { Meteor } from 'meteor/meteor';
 import React, { useState } from 'react';
-import * as yup from 'yup';
 import { useFormik } from 'formik';
 import {
   Flex,
@@ -22,6 +21,7 @@ import { Accounts } from 'meteor/accounts-base';
 import { RoutePaths } from '../common/RoutePaths';
 import { useTracker } from 'meteor/react-meteor-data';
 import { SignedIn } from './SignedIn';
+import { object, string } from 'yup';
 
 /* eslint-disable import/no-default-export */
 export default function LoginPage() {
@@ -30,13 +30,9 @@ export default function LoginPage() {
   const user = useTracker(() => Meteor.user());
   const navigate = useNavigate();
 
-  const validationSchema = yup.object({
-    username: yup
-      .string('Enter your username')
-      .required('Username is required'),
-    password: yup
-      .string('Enter your password')
-      .required('Password is required'),
+  const validationSchema = object({
+    username: string('Enter your username').required('Username is required'),
+    password: string('Enter your password').required('Password is required'),
   });
 
   const handleError = (error, actions) => {
@@ -49,15 +45,13 @@ export default function LoginPage() {
   };
 
   const onSubmit = (values, actions) => {
+    const { username, password } = values;
     if (isSignup) {
-      Accounts.createUser(
-        { username: values.username, password: values.password },
-        error => {
-          handleError(error, actions);
-        }
-      );
+      Accounts.createUser({ username, password }, error => {
+        handleError(error, actions);
+      });
     } else {
-      Meteor.loginWithPassword(values.username, values.password, error => {
+      Meteor.loginWithPassword(username, password, error => {
         handleError(error, actions);
       });
     }
