@@ -3,31 +3,32 @@ import React, { useState } from 'react';
 import {
   Box,
   Button,
-  Heading,
   Stack,
   Text,
   Spinner,
   useColorModeValue,
   HStack,
 } from '@chakra-ui/react';
-import { Task } from './Task';
+import { TaskItem } from './TaskItem';
 import { TasksCollection } from '../../tasks/tasks.collection';
 import { TaskForm } from './TaskForm';
 import { useTracker } from 'meteor/react-meteor-data';
+import { TasksHeader } from './TasksHeader';
 
 const markAsDone = ({ _id }) => Meteor.call('tasks.toggleDone', _id);
 
 const deleteTask = ({ _id }) => Meteor.call('tasks.remove', _id);
 
-export const Tasks = ({ user }) => {
+/* eslint-disable import/no-default-export */
+export default function TasksPage({ user }) {
   const [hideDone, setHideDone] = useState(false);
-  const doneFilter = { done: { $ne: true } };
-  const userFilter = user ? { userId: user._id } : {};
-  const pendingOnlyFilter = { ...doneFilter, ...userFilter };
-
   const { tasks, pendingCount, allCount, isLoading } = useTracker(() => {
+    const doneFilter = { done: { $ne: true } };
+    const userFilter = user ? { userId: user._id } : {};
+    const pendingOnlyFilter = { ...doneFilter, ...userFilter };
     const noDataAvailable = { tasks: [], pendingCount: 0, allCount: 0 };
-    if (!Meteor.user()) {
+
+    if (!user) {
       return noDataAvailable;
     }
     const handler = Meteor.subscribe('tasks');
@@ -49,46 +50,15 @@ export const Tasks = ({ user }) => {
     return { tasks: tasksData, pendingCount: pending, allCount: all };
   });
 
-  const Header = () => (
-    <Stack as={Box} textAlign="center" spacing={{ base: 8 }} py={{ base: 10 }}>
-      <Heading fontWeight={600}>
-        <Text
-          as="span"
-          bgGradient="linear(to-l, #675AAA, #4399E1)"
-          bgClip="text"
-        >
-          Simple Tasks
-        </Text>
-      </Heading>
-    </Stack>
-  );
-
-  const EmptyTasks = () => (
-    <Stack justify="center" direction="row">
-      <Text color="gray.400" fontSize="xl">
-        Add your first task above.
-      </Text>
-    </Stack>
-  );
-
-  if (allCount === 0) {
-    return (
-      <>
-        <Header />
-        <TaskForm />
-        <EmptyTasks />
-      </>
-    );
-  }
-
   return (
     <>
-      <Header />
+      <TasksHeader />
       <TaskForm />
       {isLoading ? (
         <Spinner />
       ) : (
         <Box
+          mt={8}
           py={{ base: 2 }}
           px={{ base: 4 }}
           pb={{ base: 4 }}
@@ -120,7 +90,7 @@ export const Tasks = ({ user }) => {
           </HStack>
 
           {tasks.map(task => (
-            <Task
+            <TaskItem
               key={task._id}
               task={task}
               onMarkAsDone={markAsDone}
@@ -131,4 +101,4 @@ export const Tasks = ({ user }) => {
       )}
     </>
   );
-};
+}

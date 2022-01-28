@@ -1,7 +1,7 @@
 import React from 'react';
 import { Box, Button, HStack, Stack, Checkbox } from '@chakra-ui/react';
 
-export const Task = ({ task, onMarkAsDone, onDelete }) => (
+export const TaskItem = ({ task, onMarkAsDone, onDelete }) => (
   <HStack mt={4}>
     <Box w="80%">
       <Checkbox

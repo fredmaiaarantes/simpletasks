@@ -16,12 +16,20 @@ import {
   useColorModeValue,
   FormErrorMessage,
 } from '@chakra-ui/react';
+import { useNavigate } from 'react-router-dom';
 import { ErrorStatus } from '../common/ErrorStatus';
 import { Accounts } from 'meteor/accounts-base';
+import { RoutePaths } from '../common/RoutePaths';
+import { useTracker } from 'meteor/react-meteor-data';
+import { SignedIn } from './SignedIn';
 
-export const LoginForm = () => {
+/* eslint-disable import/no-default-export */
+export default function LoginPage() {
   const [isSignup, setIsSignup] = useState(false);
   const [showPassword, setShowPassword] = useState(false);
+  const user = useTracker(() => Meteor.user());
+  const navigate = useNavigate();
+
   const validationSchema = yup.object({
     username: yup
       .string('Enter your username')
@@ -37,6 +45,7 @@ export const LoginForm = () => {
       actions.setStatus(errorMessage);
     }
     actions.setSubmitting(false);
+    navigate(RoutePaths.TASKS);
   };
 
   const onSubmit = (values, actions) => {
@@ -60,6 +69,9 @@ export const LoginForm = () => {
     onSubmit,
   });
 
+  if (user) {
+    return <SignedIn />;
+  }
   return (
     <Flex align="center" justify="center">
       <Stack spacing={8} mx="auto" maxW="lg" py={12} px={6}>
@@ -169,4 +181,4 @@ export const LoginForm = () => {
       </Stack>
     </Flex>
   );
-};
+}

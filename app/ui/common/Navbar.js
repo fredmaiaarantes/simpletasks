@@ -8,13 +8,23 @@ import {
   Stack,
   useColorMode,
   useColorModeValue,
+  Link,
 } from '@chakra-ui/react';
 import { MoonIcon, SunIcon } from '@chakra-ui/icons';
+import { useTracker } from 'meteor/react-meteor-data';
+import { useNavigate } from 'react-router-dom';
+import { RoutePaths } from './RoutePaths';
 
-const logout = () => Meteor.logout();
-
-export const Navbar = ({ user }) => {
+export const Navbar = () => {
   const { colorMode, toggleColorMode } = useColorMode();
+  const user = useTracker(() => Meteor.user());
+  const navigate = useNavigate();
+
+  const logout = () => {
+    Meteor.logout(() => {
+      navigate(RoutePaths.ROOT);
+    });
+  };
 
   return (
     <Box>
@@ -35,13 +45,13 @@ export const Navbar = ({ user }) => {
             fontFamily="heading"
             color={useColorModeValue('gray.800', 'white')}
           >
-            <Text
-              as="span"
+            <Link
               bgGradient="linear(to-l, #675AAA, #4399E1)"
               bgClip="text"
+              onClick={() => navigate(RoutePaths.ROOT)}
             >
               Charm
-            </Text>
+            </Link>
           </Text>
         </Flex>
 
