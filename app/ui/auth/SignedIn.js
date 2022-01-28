@@ -14,7 +14,7 @@ export const SignedIn = () => {
             bgGradient="linear(to-l, #675AAA,#4399E1)"
             bgClip="text"
           >
-            You are already signed in!
+            You are already signed in
           </Heading>
           <Text fontSize="lg" color="gray.600">
             to start creating your simple tasks
