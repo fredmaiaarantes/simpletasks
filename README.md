@@ -41,6 +41,7 @@ meteor deploy <select a subdomain>.meteorapp.com --free --mongo
 - Integrate to Chakra-UI
 - Use React Router 6 
 - Use Lazy Loading
+- Galaxy SEO Support
 
 ## To Do
 - Define directory structure (In Progress)
