@@ -20,8 +20,9 @@ const markAsDone = ({ _id }) => Meteor.call('tasks.toggleDone', _id);
 const deleteTask = ({ _id }) => Meteor.call('tasks.remove', _id);
 
 /* eslint-disable import/no-default-export */
-export default function TasksPage({ user }) {
+export default function TasksPage() {
   const [hideDone, setHideDone] = useState(false);
+  const user = useTracker(() => Meteor.user());
   const { tasks, pendingCount, allCount, isLoading } = useTracker(() => {
     const doneFilter = { done: { $ne: true } };
     const userFilter = user ? { userId: user._id } : {};
