@@ -32,6 +32,12 @@ meteor npm install
 meteor
 ```
 
+### Cleaning up you local db
+
+```bash
+meteor reset
+```
+
 ### Deploy to Galaxy with free MongoDB
 ```bash
 meteor deploy <select a subdomain>.meteorapp.com --free --mongo
@@ -39,12 +45,12 @@ meteor deploy <select a subdomain>.meteorapp.com --free --mongo
 
 ## Done
 - Integrate to Chakra-UI
-- Use React Router 6 
-- Use Lazy Loading
+- Use ESLint and Prettier
+- Use React Router 6 and Lazy Loading
 - Use validated-method
 - Galaxy SEO Support
+- Define directory structure
+- Add migrations
 
 ## To Do
-- Define directory structure (In Progress)
 - Extend users collection
-- Add migrations

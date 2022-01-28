@@ -58,7 +58,7 @@ export default function LoginPage() {
   };
 
   const formik = useFormik({
-    initialValues: { username: 'fredmaiaarantes', password: 'abc123' },
+    initialValues: { username: 'fredmaia', password: 'abc123' },
     validationSchema,
     onSubmit,
   });
