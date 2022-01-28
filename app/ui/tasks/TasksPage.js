@@ -14,16 +14,19 @@ import { TasksCollection } from '../../tasks/tasks.collection';
 import { TaskForm } from './TaskForm';
 import { useTracker } from 'meteor/react-meteor-data';
 import { TasksHeader } from './TasksHeader';
+import { removeTask, toggleTaskDone } from '../../tasks/tasks.methods';
 
-const markAsDone = ({ _id }) => Meteor.call('tasks.toggleDone', _id);
+const markAsDone = ({ _id }) => toggleTaskDone.call({ taskId: _id });
 
-const deleteTask = ({ _id }) => Meteor.call('tasks.remove', _id);
+const deleteTask = ({ _id }) => removeTask.call({ taskId: _id });
 
 /* eslint-disable import/no-default-export */
 export default function TasksPage() {
   const [hideDone, setHideDone] = useState(false);
   const user = useTracker(() => Meteor.user());
-  const { tasks, pendingCount, allCount, isLoading } = useTracker(() => {
+  const {
+ tasks, pendingCount, allCount, isLoading,
+} = useTracker(() => {
     const doneFilter = { done: { $ne: true } };
     const userFilter = user ? { userId: user._id } : {};
     const pendingOnlyFilter = { ...doneFilter, ...userFilter };

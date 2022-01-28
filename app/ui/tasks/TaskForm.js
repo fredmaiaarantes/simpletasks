@@ -1,5 +1,4 @@
 import React from 'react';
-import { Meteor } from 'meteor/meteor';
 import {
   FormControl,
   Input,
@@ -12,6 +11,7 @@ import {
 import { object, string } from 'yup';
 import { useFormik } from 'formik';
 import { ErrorStatus } from '../common/ErrorStatus';
+import { insertTask } from '../../tasks/tasks.methods';
 
 export const TaskForm = () => {
   const validationSchema = object({
@@ -22,7 +22,7 @@ export const TaskForm = () => {
 
   const onSubmit = (values, actions) => {
     const description = values.description.trim();
-    Meteor.call('tasks.insert', description, error => {
+    insertTask.call({ description }, error => {
       if (error) {
         const errorMessage = error?.reason || 'Sorry, please try again.';
         actions.setStatus(errorMessage);

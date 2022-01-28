@@ -26,3 +26,5 @@ accounts-password@2.2.0
 matb33:collection-hooks
 dburles:collection-helpers
 mdg:seo
+mdg:validated-method
+tunifight:loggedin-mixin

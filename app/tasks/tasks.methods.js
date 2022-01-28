@@ -1,37 +1,50 @@
-import { Meteor } from 'meteor/meteor';
 import { check } from 'meteor/check';
 import { TasksCollection } from './tasks.collection';
+import { ValidatedMethod } from 'meteor/mdg:validated-method';
 
-Meteor.methods({
-  'tasks.insert'(description) {
+export const insertTask = new ValidatedMethod({
+  name: 'insertTask',
+  mixins: [LoggedInMixin],
+  checkLoggedInError: {
+    error: 'notLoggedIn',
+  },
+  validate: ({ description }) => {
     check(description, String);
-
-    if (!this.userId) {
-      throw new Meteor.Error('Error adding task', 'Not authorized.');
-    }
+  },
+  run({ description }) {
     TasksCollection.insert({
       description,
       userId: this.userId,
       createdAt: new Date(),
     });
   },
+});
 
-  'tasks.remove'(taskId) {
+export const removeTask = new ValidatedMethod({
+  name: 'removeTask',
+  mixins: [LoggedInMixin],
+  checkLoggedInError: {
+    error: 'notLoggedIn',
+  },
+  validate: ({ taskId }) => {
     check(taskId, String);
-    const { userId } = this;
-    if (!userId) {
-      throw new Meteor.Error('Error removing task', 'Not authorized.');
-    }
-    TasksCollection.findAndCheckOwnership({ taskId, userId });
+  },
+  run({ taskId }) {
+    TasksCollection.findAndCheckOwnership({ taskId, userId: this.userId });
     TasksCollection.remove(taskId);
   },
+});
 
-  'tasks.toggleDone'(taskId) {
+export const toggleTaskDone = new ValidatedMethod({
+  name: 'toggleTaskDone',
+  mixins: [LoggedInMixin],
+  checkLoggedInError: {
+    error: 'notLoggedIn',
+  },
+  validate: ({ taskId }) => {
     check(taskId, String);
-    const { userId } = this;
-    if (!userId) {
-      throw new Meteor.Error('Error updating task', 'Not authorized.');
-    }
-    TasksCollection.toggleDone({ taskId, userId });
+  },
+  run({ taskId }) {
+    TasksCollection.toggleDone({ taskId, userId: this.userId });
   },
 });
