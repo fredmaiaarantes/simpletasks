@@ -20,13 +20,34 @@ export const TasksCollection = createCollection({
     },
   }),
   collection: {
+    findByUserId({ userId, hideDone }) {
+      return hideDone
+        ? this.findPendingByUserId({ userId })
+        : this.find(
+            { userId },
+            {
+              sort: { createdAt: -1 },
+            }
+          );
+    },
+    findPendingByUserId({ userId }) {
+      return this.find(
+        { done: { $ne: true }, userId },
+        {
+          sort: { createdAt: -1 },
+        }
+      );
+    },
+    countPendingByUserId({ userId }) {
+      return this.find({ done: { $ne: true }, userId }).count();
+    },
     findAndCheckOwnership({ taskId, userId }) {
       const task = this.findOne({
         _id: taskId,
         userId,
       });
       if (!task) {
-        throw new Meteor.Error('Error removing task', 'Access denied.');
+        throw new Meteor.Error('Error', 'Access denied.');
       }
       return task;
     },

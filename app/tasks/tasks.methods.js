@@ -1,6 +1,7 @@
 import { check } from 'meteor/check';
 import { TasksCollection } from './tasks.collection';
 import { ValidatedMethod } from 'meteor/mdg:validated-method';
+import { LoggedInMixin } from 'meteor/tunifight:loggedin-mixin';
 
 export const insertTask = new ValidatedMethod({
   name: 'insertTask',

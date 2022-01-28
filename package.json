@@ -52,6 +52,6 @@
     ]
   },
   "devDependencies": {
-    "@quave/eslint-config-quave": "^1.0.5"
+    "@quave/eslint-config-quave": "^1.0.7"
   }
 }

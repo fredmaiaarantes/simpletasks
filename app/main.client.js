@@ -3,6 +3,9 @@ import { Meteor } from 'meteor/meteor';
 import { render } from 'react-dom';
 import { Routes } from './ui/common/Routes';
 
+/**
+ * This is the client-side entry point
+ */
 Meteor.startup(() => {
   const rootElement = document.getElementById('react-target');
   render(
