@@ -46,7 +46,6 @@ export const Navbar = () => {
             color={useColorModeValue('gray.800', 'white')}
           >
             <Link
-              href={RoutePaths.ROOT}
               bgGradient="linear(to-l, #675AAA, #4399E1)"
               bgClip="text"
               onClick={() => navigate(RoutePaths.ROOT)}

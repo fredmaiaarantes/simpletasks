@@ -27,7 +27,7 @@ import { object, string } from 'yup';
 export default function LoginPage() {
   const [isSignup, setIsSignup] = useState(false);
   const [showPassword, setShowPassword] = useState(false);
-  const user = useTracker(() => Meteor.user());
+  const userId = useTracker(() => Meteor.userId());
   const navigate = useNavigate();
 
   const validationSchema = object({
@@ -63,7 +63,7 @@ export default function LoginPage() {
     onSubmit,
   });
 
-  if (user) {
+  if (userId) {
     return <SignedIn />;
   }
   return (
