@@ -46,6 +46,7 @@ meteor deploy <select a subdomain>.meteorapp.com --free --mongo
 ## Done
 - Integrate to Chakra-UI
 - Use ESLint and Prettier
+- Host in Galaxy
 - Use React Router 6 and Lazy Loading
 - Use validated-method
 - Galaxy SEO Support
@@ -54,3 +55,10 @@ meteor deploy <select a subdomain>.meteorapp.com --free --mongo
 
 ## To Do
 - Extend users collection
+
+## Main Meteor packages
+- react-meteor-data
+- quave:collections
+- percolate:migrations
+- force-ssl
+- mdg:seo

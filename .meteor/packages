@@ -30,3 +30,4 @@ mdg:seo
 mdg:validated-method
 tunifight:loggedin-mixin
 percolate:migrations
+force-ssl
