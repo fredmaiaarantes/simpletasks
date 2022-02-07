@@ -51,7 +51,7 @@ meteor deploy <select a subdomain>.meteorapp.com --free --mongo
 - Use validated-method
 - Galaxy SEO Support
 - Define directory structure
-- Add migrations
+- Add database migrations
 
 ## To Do
 - Extend users collection
