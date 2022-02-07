@@ -31,3 +31,4 @@ mdg:validated-method
 tunifight:loggedin-mixin
 percolate:migrations
 force-ssl@1.1.0
+mdg:meteor-apm-agent
