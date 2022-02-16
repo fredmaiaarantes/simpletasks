@@ -10,6 +10,7 @@ import {
 import { TaskItem } from './TaskItem';
 import { removeTask, toggleTaskDone } from '../../tasks/tasks.methods';
 import React from 'react';
+import FlipMove from 'react-flip-move';
 
 export const TaskItems = ({
   tasks,
@@ -50,13 +51,15 @@ export const TaskItems = ({
       </Stack>
     </HStack>
     {isLoading ? <Spinner /> : <></>}
-    {tasks.map(task => (
-      <TaskItem
-        key={task._id}
-        task={task}
-        onMarkAsDone={taskId => toggleTaskDone.call({ taskId })}
-        onDelete={taskId => removeTask.call({ taskId })}
-      />
-    ))}
+    <FlipMove duration={500}>
+      {tasks.map(task => (
+        <TaskItem
+          key={task._id}
+          task={task}
+          onMarkAsDone={taskId => toggleTaskDone.call({ taskId })}
+          onDelete={taskId => removeTask.call({ taskId })}
+        />
+      ))}
+    </FlipMove>
   </Box>
 );
