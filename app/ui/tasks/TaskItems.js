@@ -50,16 +50,19 @@ export const TaskItems = ({
         </Button>
       </Stack>
     </HStack>
-    {isLoading ? <Spinner /> : <></>}
-    <FlipMove duration={500}>
-      {tasks.map(task => (
-        <TaskItem
-          key={task._id}
-          task={task}
-          onMarkAsDone={taskId => toggleTaskDone.call({ taskId })}
-          onDelete={taskId => removeTask.call({ taskId })}
-        />
-      ))}
-    </FlipMove>
+    {isLoading() ? (
+      <Spinner />
+    ) : (
+      <FlipMove duration={700}>
+        {tasks.map(task => (
+          <TaskItem
+            key={task._id}
+            task={task}
+            onMarkAsDone={taskId => toggleTaskDone.call({ taskId })}
+            onDelete={taskId => removeTask.call({ taskId })}
+          />
+        ))}
+      </FlipMove>
+    )}
   </Box>
 );

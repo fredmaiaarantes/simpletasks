@@ -22,7 +22,7 @@ export default function TasksPage() {
       <TasksHeader />
       <TaskForm />
       <TaskItems
-        isLoading={isLoading()}
+        isLoading={isLoading}
         tasks={tasks}
         pendingCount={pendingCount}
         hideDone={hideDone}
