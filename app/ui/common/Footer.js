@@ -5,6 +5,7 @@ import {
   ButtonGroup,
   IconButton,
   Divider,
+  useColorModeValue,
 } from '@chakra-ui/react';
 import React from 'react';
 import { FaGithub, FaLinkedin, FaTwitter } from 'react-icons/fa';
@@ -21,7 +22,7 @@ export const Footer = () => (
     }}
   >
     <Stack>
-      <Divider my="5" borderColor="blue.800" />
+      <Divider my="5" borderColor={useColorModeValue('gray.200', 'gray.700')} />
       <Stack direction="row" spacing="2" align="center" justify="space-between">
         <ButtonGroup variant="ghost" color="gray.600">
           <IconButton
