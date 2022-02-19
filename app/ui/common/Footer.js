@@ -8,7 +8,9 @@ import {
   useColorModeValue,
 } from '@chakra-ui/react';
 import React from 'react';
-import { FaGithub, FaLinkedin, FaTwitter } from 'react-icons/fa';
+import { FaGithub } from '@react-icons/all-files/fa/FaGithub';
+import { FaLinkedin } from '@react-icons/all-files/fa/FaLinkedin';
+import { FaTwitter } from '@react-icons/all-files/fa/FaTwitter';
 
 export const Footer = () => (
   <Box
