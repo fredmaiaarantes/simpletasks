@@ -1,7 +1,10 @@
 import { Meteor } from 'meteor/meteor';
 import { Migrations } from 'meteor/percolate:migrations';
 import '../db/migrations';
-import './tasks/tasks.methods';
+
+import './tasks/removeTask';
+import './tasks/insertTask';
+import './tasks/toggleTaskDone';
 import './tasks/tasks.publications';
 
 /**

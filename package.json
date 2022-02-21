@@ -3,10 +3,11 @@
   "author": "@fredmaiaarantes",
   "private": true,
   "scripts": {
-    "start": "meteor run",
+    "start": "meteor run --exclude-archs web.browser.legacy,web.cordova",
     "eslint": "eslint . --fix",
     "prettier": "prettier --write \"**/*.js\"",
-    "check": "npm run eslint && npm run prettier"
+    "check": "npm run eslint && npm run prettier",
+    "visualize": "meteor --production --extra-packages bundle-visualizer"
   },
   "dependencies": {
     "@babel/runtime": "^7.16.7",
@@ -15,7 +16,6 @@
     "@emotion/react": "^11.7.1",
     "@emotion/styled": "^11.6.0",
     "@react-icons/all-files": "^4.1.0",
-    "@types/meteor": "^2.0.4",
     "bcrypt": "^5.0.1",
     "formik": "^2.2.9",
     "framer-motion": "^4.1.17",
@@ -28,6 +28,13 @@
     "react-router-dom": "^6.2.1",
     "simpl-schema": "^1.12.0",
     "yup": "^0.32.11"
+  },
+  "devDependencies": {
+    "@quave/eslint-config-quave": "^1.0.7",
+    "@types/meteor": "^2.0.4",
+    "@types/mocha": "^8.2.3",
+    "@types/simpl-schema": "^1.12.0",
+    "@types/meteor-mdg-validated-method": "^1.2.3"
   },
   "meteor": {
     "mainModule": {
@@ -52,8 +59,5 @@
     "extends": [
       "@quave/quave"
     ]
-  },
-  "devDependencies": {
-    "@quave/eslint-config-quave": "^1.0.7"
   }
 }

@@ -11,7 +11,7 @@ import {
 import { object, string } from 'yup';
 import { useFormik } from 'formik';
 import { ErrorStatus } from '../common/ErrorStatus';
-import { insertTask } from '../../tasks/tasks.methods';
+import { insertTask } from '../../tasks/insertTask';
 
 export const TaskForm = () => {
   const validationSchema = object({

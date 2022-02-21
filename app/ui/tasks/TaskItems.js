@@ -8,7 +8,8 @@ import {
   useColorModeValue,
 } from '@chakra-ui/react';
 import { TaskItem } from './TaskItem';
-import { removeTask, toggleTaskDone } from '../../tasks/tasks.methods';
+import { toggleTaskDone } from '../../tasks/toggleTaskDone';
+import { removeTask } from '../../tasks/removeTask';
 import React from 'react';
 import FlipMove from 'react-flip-move';
 

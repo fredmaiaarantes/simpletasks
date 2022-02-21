@@ -1,6 +1,5 @@
 import { createCollection } from 'meteor/quave:collections';
 import SimpleSchema from 'simpl-schema';
-import { Meteor } from 'meteor/meteor';
 
 export const TasksCollection = createCollection({
   name: 'tasks',
@@ -40,24 +39,6 @@ export const TasksCollection = createCollection({
     },
     countPendingByUserId({ userId }) {
       return this.find({ done: { $ne: true }, userId }).count();
-    },
-    findAndCheckOwnership({ taskId, userId }) {
-      const task = this.findOne({
-        _id: taskId,
-        userId,
-      });
-      if (!task) {
-        throw new Meteor.Error('Error', 'Access denied.');
-      }
-      return task;
-    },
-    toggleDone({ taskId, userId }) {
-      const task = this.findAndCheckOwnership({ taskId, userId });
-      this.update(taskId, {
-        $set: {
-          done: !task.done,
-        },
-      });
     },
   },
 });
