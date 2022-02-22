@@ -1,6 +1,6 @@
 import { Meteor } from 'meteor/meteor';
 import React, { useState } from 'react';
-import { TasksCollection } from '../../tasks/tasks.collection';
+import { Task } from '../../tasks/Task';
 import { TaskForm } from './TaskForm';
 import { useTracker, useFind, useSubscribe } from 'meteor/react-meteor-data';
 import { TasksHeader } from './TasksHeader';
@@ -11,11 +11,14 @@ export default function TasksPage() {
   const [hideDone, setHideDone] = useState(false);
   const isLoading = useSubscribe('tasksByLoggedUser');
   const userId = useTracker(() => Meteor.userId());
-  const tasks = useFind(
-    () => TasksCollection.findByUserId({ userId, hideDone }),
-    [hideDone]
-  );
-  const pendingCount = TasksCollection.countPendingByUserId({ userId });
+  const filter = hideDone ? { done: { $ne: true }, userId } : { userId };
+  const tasks = useFind(() => Task.find(filter, { sort: { createdAt: -1 } }), [
+    hideDone,
+  ]);
+  const pendingCount = Task.find({
+    done: { $ne: true },
+    userId,
+  }).count();
 
   return (
     <>

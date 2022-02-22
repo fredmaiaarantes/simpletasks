@@ -1,6 +1,6 @@
 import { Migrations } from 'meteor/percolate:migrations';
 import { Accounts } from 'meteor/accounts-base';
-import { TasksCollection } from '../app/tasks/tasks.collection';
+import { Task } from '../app/tasks/Task';
 
 Migrations.add({
   version: 1,
@@ -19,20 +19,20 @@ Migrations.add({
   up() {
     const createdAt = new Date();
     const { _id: userId } = Accounts.findUserByUsername('fredmaia');
-    TasksCollection.insert({
+    new Task({
       description: 'Install Node@14',
       userId,
       createdAt,
-    });
-    TasksCollection.insert({
+    }).save();
+    new Task({
       description: 'Install MeteorJS',
       userId,
       createdAt,
-    });
-    TasksCollection.insert({
+    }).save();
+    new Task({
       description: 'Clone this repository',
       userId,
       createdAt,
-    });
+    }).save();
   },
 });

@@ -13,7 +13,7 @@ import {
 import { MoonIcon, SunIcon } from '@chakra-ui/icons';
 import { useTracker } from 'meteor/react-meteor-data';
 import { useNavigate } from 'react-router-dom';
-import { RoutePaths } from './RoutePaths';
+import { RoutePaths } from './Routes';
 
 export const Navbar = () => {
   const { colorMode, toggleColorMode } = useColorMode();

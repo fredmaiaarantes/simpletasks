@@ -1,5 +1,5 @@
 import { Button, Flex, Heading, Stack, Text } from '@chakra-ui/react';
-import { RoutePaths } from '../common/RoutePaths';
+import { RoutePaths } from '../common/Routes';
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 

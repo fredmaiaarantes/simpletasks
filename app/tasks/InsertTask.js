@@ -1,7 +1,7 @@
 import { ValidatedMethod } from 'meteor/mdg:validated-method';
 import { LoggedInMixin } from 'meteor/tunifight:loggedin-mixin';
 import { check } from 'meteor/check';
-import { TasksCollection } from './tasks.collection';
+import { Task } from './Task';
 import { Meteor } from 'meteor/meteor';
 
 const validate = ({ description }) => {
@@ -20,10 +20,11 @@ export const insertTask = new ValidatedMethod({
   },
   validate,
   run({ description }) {
-    TasksCollection.insert({
+    const task = new Task({
       description,
       userId: this.userId,
       createdAt: new Date(),
     });
+    task.save();
   },
 });

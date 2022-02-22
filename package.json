@@ -34,11 +34,12 @@
     "@types/meteor": "^2.0.4",
     "@types/mocha": "^8.2.3",
     "@types/simpl-schema": "^1.12.0",
-    "@types/meteor-mdg-validated-method": "^1.2.3"
+    "@types/meteor-mdg-validated-method": "^1.2.3",
+    "@types/meteor-astronomy": "^2.6.6"
   },
   "meteor": {
     "mainModule": {
-      "client": "app/main.client.js",
+      "client": "app/main.client.jsx",
       "server": "app/main.server.js"
     }
   },

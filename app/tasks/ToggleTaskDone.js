@@ -2,7 +2,7 @@ import { ValidatedMethod } from 'meteor/mdg:validated-method';
 import { LoggedInMixin } from 'meteor/tunifight:loggedin-mixin';
 import { check } from 'meteor/check';
 import { Meteor } from 'meteor/meteor';
-import { TasksCollection } from './tasks.collection';
+import { Task } from './Task';
 
 const validate = ({ taskId }) => {
   try {
@@ -10,7 +10,7 @@ const validate = ({ taskId }) => {
   } catch (exception) {
     throw new Meteor.Error('403', 'The information entered is not valid');
   }
-  const task = TasksCollection.findOne({
+  const task = Task.findOne({
     _id: taskId,
     userId: Meteor.userId(),
   });
@@ -27,11 +27,8 @@ export const toggleTaskDone = new ValidatedMethod({
   },
   validate,
   run({ taskId }) {
-    const task = TasksCollection.findOne({ _id: taskId, userId: this.userId });
-    TasksCollection.update(taskId, {
-      $set: {
-        done: !task.done,
-      },
-    });
+    const task = Task.findOne(taskId);
+    task.done = !task.done;
+    task.save();
   },
 });
