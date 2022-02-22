@@ -1,22 +1,11 @@
 import { ValidatedMethod } from 'meteor/mdg:validated-method';
 import { LoggedInMixin } from 'meteor/tunifight:loggedin-mixin';
-import { check } from 'meteor/check';
-import { Meteor } from 'meteor/meteor';
 import { Task } from './Task';
+import { validateTaskId, validateTaskOwner } from './Validator';
 
-const validate = ({ taskId }) => {
-  try {
-    check(taskId, String);
-  } catch (exception) {
-    throw new Meteor.Error('403', 'The information entered is not valid');
-  }
-  const task = Task.findOne({
-    _id: taskId,
-    userId: Meteor.userId(),
-  });
-  if (!task) {
-    throw new Meteor.Error('Error', 'Access denied.');
-  }
+const validateInput = ({ taskId }) => {
+  validateTaskId({ taskId });
+  validateTaskOwner({ taskId });
 };
 
 export const toggleTaskDone = new ValidatedMethod({
@@ -25,7 +14,7 @@ export const toggleTaskDone = new ValidatedMethod({
   checkLoggedInError: {
     error: 'notLoggedIn',
   },
-  validate,
+  validate: validateInput,
   run({ taskId }) {
     const task = Task.findOne(taskId);
     task.done = !task.done;

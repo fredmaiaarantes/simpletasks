@@ -4,7 +4,7 @@ import { check } from 'meteor/check';
 import { Task } from './Task';
 import { Meteor } from 'meteor/meteor';
 
-const validate = ({ description }) => {
+const validateInput = ({ description }) => {
   try {
     check(description, String);
   } catch (exception) {
@@ -18,7 +18,7 @@ export const insertTask = new ValidatedMethod({
   checkLoggedInError: {
     error: 'notLoggedIn',
   },
-  validate,
+  validate: validateInput,
   run({ description }) {
     const task = new Task({
       description,
