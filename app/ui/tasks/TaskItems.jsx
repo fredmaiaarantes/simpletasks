@@ -11,7 +11,6 @@ import { TaskItem } from './TaskItem';
 import { toggleTaskDone } from '../../tasks/ToggleTaskDone';
 import { removeTask } from '../../tasks/RemoveTask';
 import React from 'react';
-import FlipMove from 'react-flip-move';
 
 export const TaskItems = ({
   tasks,
@@ -54,7 +53,7 @@ export const TaskItems = ({
     {isLoading() ? (
       <Spinner />
     ) : (
-      <FlipMove duration={700}>
+      <>
         {tasks.map(task => (
           <TaskItem
             key={task._id}
@@ -63,7 +62,7 @@ export const TaskItems = ({
             onDelete={taskId => removeTask.call({ taskId })}
           />
         ))}
-      </FlipMove>
+      </>
     )}
   </Box>
 );

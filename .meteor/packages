@@ -21,11 +21,7 @@ static-html@1.3.2             # Define static page content in .html files
 react-meteor-data       # React higher-order component for reactively tracking Meteor data
 dev-error-overlay@0.1.1
 
-quave:collections
-aldeed:collection2
 accounts-password@2.2.0
-matb33:collection-hooks
-dburles:collection-helpers
 mdg:seo
 mdg:validated-method
 tunifight:loggedin-mixin
