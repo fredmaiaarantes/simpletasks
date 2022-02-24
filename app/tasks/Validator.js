@@ -6,7 +6,7 @@ export const validateTaskId = ({ taskId }) => {
   try {
     check(taskId, String);
   } catch (exception) {
-    throw new Meteor.Error('403', 'The information entered is not valid');
+    throw new Meteor.Error('403', 'The taskId entered is not valid');
   }
 };
 
