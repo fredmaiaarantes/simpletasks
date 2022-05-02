@@ -29,10 +29,10 @@
   },
   "devDependencies": {
     "@quave/eslint-config-quave": "^1.0.7",
-    "@types/meteor": "^2.6.2",
-    "@types/mocha": "^8.2.3",
+    "@types/meteor": "^2.6.3",
+    "@types/meteor-astronomy": "^2.6.6",
     "@types/meteor-mdg-validated-method": "^1.2.4",
-    "@types/meteor-astronomy": "^2.6.6"
+    "@types/mocha": "^8.2.3"
   },
   "meteor": {
     "mainModule": {
