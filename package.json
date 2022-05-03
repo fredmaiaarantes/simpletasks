@@ -32,7 +32,7 @@
     "@types/meteor": "^2.6.3",
     "@types/meteor-astronomy": "^2.6.6",
     "@types/meteor-mdg-validated-method": "^1.2.4",
-    "@types/mocha": "^8.2.3"
+    "@types/mocha": "^9.1.1"
   },
   "meteor": {
     "mainModule": {
