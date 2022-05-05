@@ -18,11 +18,11 @@
     "@react-icons/all-files": "^4.1.0",
     "bcrypt": "^5.0.1",
     "formik": "^2.2.9",
-    "framer-motion": "^4.1.17",
+    "framer-motion": "^6.3.3",
     "history": "^5.3.0",
     "meteor-node-stubs": "^1.2.3",
-    "react": "^17.0.2",
-    "react-dom": "^17.0.2",
+    "react": "^18.1.0",
+    "react-dom": "^18.1.0",
     "react-helmet": "^6.1.0",
     "react-router-dom": "^6.3.0",
     "yup": "^0.32.11"
@@ -32,7 +32,7 @@
     "@types/meteor": "^2.6.3",
     "@types/meteor-astronomy": "^2.6.6",
     "@types/meteor-mdg-validated-method": "^1.2.4",
-    "@types/mocha": "^8.2.3"
+    "@types/mocha": "^9.1.1"
   },
   "meteor": {
     "mainModule": {
