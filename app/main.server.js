@@ -12,4 +12,6 @@ import './tasks/TasksPublications';
  */
 Meteor.startup(() => {
   Migrations.migrateTo('latest');
+  // eslint-disable-next-line no-console
+  console.log(`env TEST=${process.env.TEST}`);
 });
