@@ -46,7 +46,7 @@ export const Navbar = () => {
             fontFamily="heading"
             color={useColorModeValue('gray.800', 'white')}
           >
-            <Link as={ReactLink} to={RoutePaths.ROOT}
+            <Link as={ReactLink} to={RoutePaths.ROOT} href={RoutePaths.ROOT}
                   bgGradient="linear(to-l, #675AAA, #4399E1)"
                   bgClip="text">
               Simple Tasks
