@@ -40,18 +40,13 @@ export const Navbar = () => {
       >
         <Flex flex={{ base: 1 }} justify="start">
           <Text
-            textAlign="left"
+            bgGradient="linear(to-l, #675AAA, #4399E1)"
+            bgClip='text'
+            fontWeight='bold'
             fontFamily="heading"
-            color={useColorModeValue('gray.800', 'white')}
+            textAlign="left"
           >
-            <Button
-              variant="link"
-              bgGradient="linear(to-l, #675AAA, #4399E1)"
-              bgClip="text"
-              onClick={() => navigate(RoutePaths.ROOT)}
-            >
-              Simple Tasks
-            </Button>
+            Simple Tasks
           </Text>
         </Flex>
 
