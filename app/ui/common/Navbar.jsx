@@ -40,9 +40,10 @@ export const Navbar = () => {
       >
         <Flex flex={{ base: 1 }} justify="start">
           <Text
+            as="span"
             bgGradient="linear(to-l, #675AAA, #4399E1)"
-            bgClip='text'
-            fontWeight='bold'
+            bgClip="text"
+            fontWeight="bold"
             fontFamily="heading"
             textAlign="left"
           >
