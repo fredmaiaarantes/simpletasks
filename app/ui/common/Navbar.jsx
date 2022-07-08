@@ -12,6 +12,7 @@ import {
 } from '@chakra-ui/react';
 import { MoonIcon, SunIcon } from '@chakra-ui/icons';
 import { useTracker } from 'meteor/react-meteor-data';
+import { Link as ReactLink  } from "react-router-dom";
 import { useNavigate } from 'react-router-dom';
 import { RoutePaths } from './Routes';
 
@@ -45,11 +46,9 @@ export const Navbar = () => {
             fontFamily="heading"
             color={useColorModeValue('gray.800', 'white')}
           >
-            <Link
-              bgGradient="linear(to-l, #675AAA, #4399E1)"
-              bgClip="text"
-              onClick={() => navigate(RoutePaths.ROOT)}
-            >
+            <Link as={ReactLink} to={RoutePaths.ROOT}
+                  bgGradient="linear(to-l, #675AAA, #4399E1)"
+                  bgClip="text">
               Simple Tasks
             </Link>
           </Text>

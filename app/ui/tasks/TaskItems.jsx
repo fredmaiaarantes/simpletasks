@@ -27,13 +27,13 @@ export const TaskItems = ({
     border={1}
     borderStyle="solid"
     borderRadius="md"
-    borderColor={useColorModeValue('gray.200', 'gray.700')}
+    borderColor={useColorModeValue('gray.400', 'gray.700')}
   >
     <HStack mt={2}>
       <Box w="70%">
         <Text
           as="span"
-          color={useColorModeValue('gray.500', 'gray.400')}
+          color={useColorModeValue('gray.600', 'gray.400')}
           fontSize="xs"
         >
           You have {tasks.length} {tasks.length === 1 ? 'task ' : 'tasks '}
@@ -42,6 +42,8 @@ export const TaskItems = ({
       </Box>
       <Stack w="30%" justify="flex-end" direction="row">
         <Button
+          bg="teal.600"
+          color="white"
           colorScheme="teal"
           size="xs"
           onClick={() => setHideDone(!hideDone)}

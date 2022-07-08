@@ -16,14 +16,14 @@ export const SignedIn = () => {
           >
             You are already signed in
           </Heading>
-          <Text fontSize="lg" color="gray.600">
+          <Text fontSize="lg" color="gray.400">
             to start creating your simple tasks
           </Text>
         </Stack>
         <Stack spacing={10}>
           <Button
             onClick={() => navigate(RoutePaths.TASKS)}
-            bg="blue.400"
+            bg="blue.600"
             color="white"
             _hover={{
               bg: 'blue.500',

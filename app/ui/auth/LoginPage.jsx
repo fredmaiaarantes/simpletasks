@@ -77,7 +77,7 @@ export default function LoginPage() {
           >
             Sign in to your account
           </Heading>
-          <Text fontSize="lg" color="gray.600">
+          <Text fontSize="lg" color={useColorModeValue('gray.600', 'gray.400')}>
             to start creating your simple tasks
           </Text>
         </Stack>
@@ -94,6 +94,7 @@ export default function LoginPage() {
                 isInvalid={formik.errors.username && formik.touched.username}
               >
                 <Input
+                  id="username"
                   name="username"
                   onChange={formik.handleChange}
                   value={formik.values.username}
@@ -129,7 +130,7 @@ export default function LoginPage() {
                   <Stack spacing={10}>
                     <Button
                       type="submit"
-                      bg="blue.400"
+                      bg="blue.600"
                       color="white"
                       _hover={{
                         bg: 'blue.500',
@@ -140,7 +141,7 @@ export default function LoginPage() {
                     </Button>
                   </Stack>
                   <Stack spacing={10}>
-                    <Button onClick={() => setIsSignup(true)} variant="link">
+                    <Button onClick={() => setIsSignup(true)}>
                       Create a new account
                     </Button>
                   </Stack>
@@ -152,7 +153,7 @@ export default function LoginPage() {
                   <Stack spacing={10}>
                     <Button
                       type="submit"
-                      bg="green.400"
+                      bg="green.600"
                       color="white"
                       _hover={{
                         bg: 'green.500',
@@ -163,7 +164,7 @@ export default function LoginPage() {
                     </Button>
                   </Stack>
                   <Stack spacing={10}>
-                    <Button onClick={() => setIsSignup(false)} variant="link">
+                    <Button onClick={() => setIsSignup(false)}>
                       I have an account
                     </Button>
                   </Stack>
