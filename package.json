@@ -1,6 +1,7 @@
 {
   "name": "simpletasks",
   "author": "@fredmaiaarantes",
+  "version": "1.0.0",
   "private": true,
   "scripts": {
     "start": "meteor run --exclude-archs web.browser.legacy,web.cordova",
