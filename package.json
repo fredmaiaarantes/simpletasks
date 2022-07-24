@@ -1,12 +1,12 @@
 {
   "name": "simpletasks",
   "author": "@fredmaiaarantes",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "private": true,
   "scripts": {
     "start": "meteor run --exclude-archs web.browser.legacy,web.cordova",
     "eslint": "eslint . --fix",
-    "prettier": "prettier --write \"**/*.js\"",
+    "prettier": "prettier --write \"**/*.js\" \"**/*.jsx\"",
     "check": "npm run eslint && npm run prettier",
     "visualize": "meteor --production --extra-packages bundle-visualizer"
   },
@@ -26,21 +26,20 @@
     "react-dom": "^17.0.2",
     "react-helmet": "^6.1.0",
     "react-router-dom": "^6.3.0",
+    "simpl-schema": "^1.12.3",
     "yup": "^0.32.11"
   },
   "devDependencies": {
     "@quave/eslint-config-quave": "^1.0.7",
     "@types/meteor": "^2.7.1",
-    "@types/meteor-astronomy": "^2.6.7",
-    "@types/meteor-mdg-validated-method": "^1.2.4",
     "@types/mocha": "^9.1.1",
     "@types/react": "^17.0.47",
     "@types/react-dom": "^17.0.17"
   },
   "meteor": {
     "mainModule": {
-      "client": "app/main.client.jsx",
-      "server": "app/main.server.js"
+      "client": "ui/main.jsx",
+      "server": "api/main.js"
     }
   },
   "husky": {
@@ -50,7 +49,7 @@
     }
   },
   "lint-staged": {
-    "*.js": [
+    "*.{js|jsx}": [
       "eslint --fix",
       "prettier --write",
       "git add"
@@ -59,6 +58,13 @@
   "eslintConfig": {
     "extends": [
       "@quave/quave"
-    ]
+    ],
+    "settings": {
+      "import/resolver": {
+        "meteor": {
+          "extensions": [".js", ".jsx"]
+        }
+      }
+    }
   }
 }

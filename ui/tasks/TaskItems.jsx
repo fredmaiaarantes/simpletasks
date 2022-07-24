@@ -8,9 +8,8 @@ import {
   useColorModeValue,
 } from '@chakra-ui/react';
 import { TaskItem } from './TaskItem';
-import { toggleTaskDone } from '../../tasks/ToggleTaskDone';
-import { removeTask } from '../../tasks/RemoveTask';
 import React from 'react';
+import { Meteor } from 'meteor/meteor';
 
 export const TaskItems = ({
   tasks,
@@ -60,8 +59,8 @@ export const TaskItems = ({
           <TaskItem
             key={task._id}
             task={task}
-            onMarkAsDone={taskId => toggleTaskDone.call({ taskId })}
-            onDelete={taskId => removeTask.call({ taskId })}
+            onMarkAsDone={taskId => Meteor.call('toggleTaskDone', { taskId })}
+            onDelete={taskId => Meteor.call('removeTask', { taskId })}
           />
         ))}
       </>

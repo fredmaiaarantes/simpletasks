@@ -58,7 +58,7 @@ meteor deploy <select a subdomain>.meteorapp.com --free --mongo
 
 ## Main Meteor packages
 - react-meteor-data
-- quave:collections
 - percolate:migrations
 - force-ssl
 - mdg:seo
+- aldeed:collection2

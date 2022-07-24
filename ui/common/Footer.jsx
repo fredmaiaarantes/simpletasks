@@ -61,7 +61,7 @@ export const Footer = () => (
         <a href="https://meteor.com" target="_blank">
           MeteorJS
         </a>
-        ) by {' '}
+        ) by{' '}
         <a href="https://twitter.com/fredmaiaarantes" target="_blank">
           @fredmaiaarantes
         </a>

@@ -23,9 +23,7 @@ dev-error-overlay@0.1.1
 
 accounts-password@2.3.1
 mdg:seo
-mdg:validated-method
-tunifight:loggedin-mixin
 percolate:migrations
 force-ssl@1.1.0
 mdg:meteor-apm-agent
-jagi:astronomy
+aldeed:collection2

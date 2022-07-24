@@ -1,11 +1,8 @@
 import { Meteor } from 'meteor/meteor';
 import { Migrations } from 'meteor/percolate:migrations';
-import '../db/migrations';
-
-import './tasks/RemoveTask';
-import './tasks/InsertTask';
-import './tasks/ToggleTaskDone';
-import './tasks/TasksPublications';
+import './db/migrations';
+import './tasks/tasks.methods';
+import './tasks/tasks.publications';
 
 /**
  * This is the server-side entry point

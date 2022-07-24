@@ -1,10 +1,10 @@
 import { BrowserRouter, Routes as ReactRoutes, Route } from 'react-router-dom';
-import { App } from '../App';
 import React from 'react';
+import { App } from './App';
 
-const LoginPage = React.lazy(() => import('../auth/LoginPage'));
-const TasksPage = React.lazy(() => import('../tasks/TasksPage'));
-const NotFoundPage = React.lazy(() => import('./NotFoundPage'));
+const LoginPage = React.lazy(() => import('./auth/LoginPage'));
+const TasksPage = React.lazy(() => import('./tasks/TasksPage'));
+const NotFoundPage = React.lazy(() => import('./common/NotFoundPage'));
 
 export const RoutePaths = {
   ROOT: '/',
