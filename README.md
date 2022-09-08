@@ -54,10 +54,11 @@ meteor deploy <select a subdomain>.meteorapp.com --free --mongo
 
 ## Done
 - Integrate to Chakra-UI
-- Use ESLint and Prettier
+- Use ESLint, Prettier, and Husky
 - Host in Galaxy
+- Meteor APM monitoring
 - Use React Router 6 and Lazy Loading
-- Use validated-method
+- Use Formik and yup
 - Galaxy SEO Support
 - Define directory structure
 - Add database migrations
