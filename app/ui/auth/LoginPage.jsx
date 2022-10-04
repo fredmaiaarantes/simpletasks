@@ -16,12 +16,12 @@ import {
   FormErrorMessage,
 } from '@chakra-ui/react';
 import { useNavigate } from 'react-router-dom';
-import { ErrorStatus } from '../common/ErrorStatus';
+import { ErrorStatus } from '../lib/ErrorStatus';
 import { Accounts } from 'meteor/accounts-base';
-import { RoutePaths } from '../Routes';
 import { useTracker } from 'meteor/react-meteor-data';
 import { SignedIn } from './SignedIn';
 import { object, string } from 'yup';
+import { RoutePaths } from '../lib/RoutePaths';
 
 /* eslint-disable import/no-default-export */
 export default function LoginPage() {

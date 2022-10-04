@@ -1,7 +1,7 @@
 import { check } from 'meteor/check';
 import { TasksCollection } from './tasks.collection';
 import { Meteor } from 'meteor/meteor';
-import { checkLoggedIn } from '../common/auth';
+import { checkLoggedIn } from '../lib/auth';
 
 /**
  * Insert a task for the logged user.

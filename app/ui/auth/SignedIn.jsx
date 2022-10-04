@@ -1,7 +1,7 @@
 import { Button, Flex, Heading, Stack, Text } from '@chakra-ui/react';
-import { RoutePaths } from '../Routes';
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
+import { RoutePaths } from '../lib/RoutePaths';
 
 export const SignedIn = () => {
   const navigate = useNavigate();

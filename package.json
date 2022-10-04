@@ -38,8 +38,8 @@
   },
   "meteor": {
     "mainModule": {
-      "client": "ui/main.jsx",
-      "server": "api/main.js"
+      "client": "app/ui/main.jsx",
+      "server": "app/api/main.js"
     }
   },
   "husky": {
@@ -62,7 +62,10 @@
     "settings": {
       "import/resolver": {
         "meteor": {
-          "extensions": [".js", ".jsx"]
+          "extensions": [
+            ".js",
+            ".jsx"
+          ]
         }
       }
     }

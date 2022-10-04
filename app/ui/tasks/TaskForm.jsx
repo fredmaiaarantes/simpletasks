@@ -11,7 +11,7 @@ import {
 } from '@chakra-ui/react';
 import { object, string } from 'yup';
 import { useFormik } from 'formik';
-import { ErrorStatus } from '../common/ErrorStatus';
+import { ErrorStatus } from '../lib/ErrorStatus';
 
 export const TaskForm = () => {
   const validationSchema = object({
