@@ -1,6 +1,5 @@
 import { Meteor } from 'meteor/meteor';
 import React, { useState } from 'react';
-import { useFormik } from 'formik';
 import {
   Flex,
   Box,
@@ -20,48 +19,56 @@ import { ErrorStatus } from '../lib/ErrorStatus';
 import { Accounts } from 'meteor/accounts-base';
 import { useTracker } from 'meteor/react-meteor-data';
 import { SignedIn } from './SignedIn';
-import { object, string } from 'yup';
 import { RoutePaths } from '../lib/RoutePaths';
+import { useForm } from 'react-hook-form';
+import { zodResolver } from '@hookform/resolvers/zod';
+import * as z from 'zod';
 
 /* eslint-disable import/no-default-export */
 export default function LoginPage() {
   const [isSignup, setIsSignup] = useState(false);
   const [showPassword, setShowPassword] = useState(false);
+  const [errorMessage, setErrorMessage] = useState('');
   const userId = useTracker(() => Meteor.userId());
   const navigate = useNavigate();
 
-  const validationSchema = object({
-    username: string('Enter your username').required('Username is required'),
-    password: string('Enter your password').required('Password is required'),
+  const schema = z.object({
+    username: z.string().min(1, 'Username is required'),
+    password: z.string().min(1, 'Password is required'),
   });
 
-  const handleError = (error, actions) => {
+  const defaultValues = {
+    username: 'fredmaia',
+    password: 'abc123',
+  };
+
+  const {
+    handleSubmit,
+    register,
+    formState: { errors, isSubmitting },
+  } = useForm({ defaultValues, resolver: zodResolver(schema) });
+
+  const handleError = error => {
     if (error) {
-      const errorMessage = error?.reason || 'Sorry, please try again.';
-      actions.setStatus(errorMessage);
+      const reason = error?.reason || 'Sorry, please try again.';
+      setErrorMessage(reason);
+      return;
     }
-    actions.setSubmitting(false);
     navigate(RoutePaths.TASKS);
   };
 
-  const onSubmit = (values, actions) => {
+  const onSubmit = values => {
     const { username, password } = values;
     if (isSignup) {
       Accounts.createUser({ username, password }, error => {
-        handleError(error, actions);
+        handleError(error);
       });
     } else {
       Meteor.loginWithPassword(username, password, error => {
-        handleError(error, actions);
+        handleError(error);
       });
     }
   };
-
-  const formik = useFormik({
-    initialValues: { username: 'fredmaia', password: 'abc123' },
-    validationSchema,
-    onSubmit,
-  });
 
   if (userId) {
     return <SignedIn />;
@@ -87,31 +94,24 @@ export default function LoginPage() {
           boxShadow="lg"
           p={8}
         >
-          <ErrorStatus status={formik.status} />
-          <form onSubmit={formik.handleSubmit}>
+          <ErrorStatus status={errorMessage} />
+          <form onSubmit={handleSubmit(onSubmit)}>
             <Stack spacing={4}>
-              <FormControl
-                isInvalid={formik.errors.username && formik.touched.username}
-              >
+              <FormControl isInvalid={!!errors.username}>
                 <Input
                   id="username"
-                  name="username"
-                  onChange={formik.handleChange}
-                  value={formik.values.username}
                   placeholder="Enter your username"
+                  {...register('username')}
                 />
-                <FormErrorMessage>{formik.errors.username}</FormErrorMessage>
+                <FormErrorMessage>{errors.username?.message}</FormErrorMessage>
               </FormControl>
-              <FormControl
-                isInvalid={formik.errors.password && formik.touched.password}
-              >
+              <FormControl isInvalid={!!errors.password}>
                 <InputGroup size="md">
                   <Input
-                    name="password"
-                    onChange={formik.handleChange}
-                    value={formik.values.password}
+                    id="password"
                     type={showPassword ? 'text' : 'password'}
                     placeholder="Enter your password"
+                    {...register('password')}
                   />
                   <InputRightElement width="4.5rem">
                     <Button
@@ -123,7 +123,7 @@ export default function LoginPage() {
                     </Button>
                   </InputRightElement>
                 </InputGroup>
-                <FormErrorMessage>{formik.errors.password}</FormErrorMessage>
+                <FormErrorMessage>{errors.password?.message}</FormErrorMessage>
               </FormControl>
               {!isSignup && (
                 <>
@@ -135,7 +135,7 @@ export default function LoginPage() {
                       _hover={{
                         bg: 'blue.500',
                       }}
-                      isLoading={formik.isSubmitting}
+                      isLoading={isSubmitting}
                     >
                       Sign in
                     </Button>
@@ -158,7 +158,7 @@ export default function LoginPage() {
                       _hover={{
                         bg: 'green.500',
                       }}
-                      isLoading={formik.isSubmitting}
+                      isLoading={isSubmitting}
                     >
                       Sign up
                     </Button>

@@ -16,6 +16,7 @@
     "@chakra-ui/react": "^1.8.8",
     "@emotion/react": "^11.9.3",
     "@emotion/styled": "^11.9.3",
+    "@hookform/resolvers": "^2.9.8",
     "@react-icons/all-files": "^4.1.0",
     "bcrypt": "^5.0.1",
     "formik": "^2.2.9",
@@ -25,9 +26,11 @@
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "react-helmet": "^6.1.0",
+    "react-hook-form": "^7.36.1",
     "react-router-dom": "^6.3.0",
     "simpl-schema": "^1.12.3",
-    "yup": "^0.32.11"
+    "yup": "^0.32.11",
+    "zod": "^3.19.1"
   },
   "devDependencies": {
     "@quave/eslint-config-quave": "^1.0.7",
