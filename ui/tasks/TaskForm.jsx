@@ -1,4 +1,3 @@
-import { Meteor } from 'meteor/meteor';
 import React, { useState } from 'react';
 import {
   FormControl,
@@ -13,6 +12,7 @@ import { ErrorStatus } from '../lib/ErrorStatus';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import * as z from 'zod';
+import { insertTask } from '../../api/tasks/tasks.methods';
 
 export const TaskForm = () => {
   const [errorMessage, setErrorMessage] = useState('');
@@ -27,16 +27,15 @@ export const TaskForm = () => {
     formState: { errors, isSubmitting },
   } = useForm({ resolver: zodResolver(schema) });
 
-  const onSubmit = values => {
+  const onSubmit = async values => {
     const description = values.description.trim();
-    Meteor.call('insertTask', { description }, err => {
-      if (err) {
-        const reason = err?.reason || 'Sorry, please try again.';
-        setErrorMessage(reason);
-      } else {
-        reset();
-      }
-    });
+    try {
+      await insertTask({ description });
+      reset();
+    } catch (err) {
+      const reason = err?.reason || 'Sorry, please try again.';
+      setErrorMessage(reason);
+    }
   };
 
   return (

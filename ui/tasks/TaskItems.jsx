@@ -9,7 +9,7 @@ import {
 } from '@chakra-ui/react';
 import { TaskItem } from './TaskItem';
 import React from 'react';
-import { Meteor } from 'meteor/meteor';
+import { removeTask, toggleTaskDone } from '../../api/tasks/tasks.methods';
 
 export const TaskItems = ({
   tasks,
@@ -59,8 +59,8 @@ export const TaskItems = ({
           <TaskItem
             key={task._id}
             task={task}
-            onMarkAsDone={taskId => Meteor.call('toggleTaskDone', { taskId })}
-            onDelete={taskId => Meteor.call('removeTask', { taskId })}
+            onMarkAsDone={taskId => toggleTaskDone({ taskId })}
+            onDelete={taskId => removeTask({ taskId })}
           />
         ))}
       </>

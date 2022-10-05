@@ -58,13 +58,10 @@ meteor deploy <select a subdomain>.meteorapp.com --free --mongo
 - Host in Galaxy
 - Meteor APM monitoring
 - Use React Router 6 and Lazy Loading
-- Use Formik and yup
+- Use React Hook Form and Zod for validation
 - Galaxy SEO Support
 - Define directory structure
 - Add database migrations
-
-## To Do
-- Extend users collection
 
 ## Main Meteor packages
 - react-meteor-data
@@ -73,7 +70,9 @@ meteor deploy <select a subdomain>.meteorapp.com --free --mongo
 - mdg:seo
 - aldeed:collection2
 
-## Tech Explanation
+[//]: # ( TODO document changes)
+
+## Tech Explanation (outdated)
 
 ### How is the project structured?
 
@@ -93,7 +92,7 @@ In this template, we have chosen to use Mongo, shipped out of the box with Meteo
 
 #### Database Migrations
 
-> Questions on how to strcuture your migrations ?
+> Questions on how to structure your migrations ?
 >
 > **Use api/db/migration.js as your reference**
 
