@@ -165,7 +165,7 @@ This sample comes from `ui/tasks/TaskItems.jsx:`
 
 MeteorJS supports subscriptions out of the box that can be seen in `api/tasks/tasks.publications.js` these publications are called in a similar way to RPC methods, but their values are reactive. For more details on how to deal and think in reactive programming, [Andre Stalz ](http://andre.staltz.com)has [this gist introducing Reactive Programming, ](https://gist.github.com/staltz/868e7e9bc2a7b8c1f754)and [Kris Kowal](https://github.com/kriskowal) has [this Repo](https://github.com/kriskowal/gtor) that discusses the theory of reactivity in-depth.
 
-> For using subscripiton as you can see in our docs, is similar to using methods. In React we use meteor/react-meteor-data for having a react-way of calling those methods
+> For using subscription as you can see in our docs, is similar to using methods. In React we use meteor/react-meteor-data for having a react-way of calling those methods
 
 For a good example of Subscriptions, you can look in `ui/tasks/TasksPage.jsx`
 
