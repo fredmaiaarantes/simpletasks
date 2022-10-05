@@ -7,16 +7,18 @@ The main goal is to make development as quick and efficient as possible. To achi
 -   [Meteor ](https://meteor.com/)- Fullstack Framework focused on productivity that uses RPCs and Sockets for reactivity
 -   [React ](https://reactjs.org/)- Minimal UI Library for building on the web
 -   [Chakra UI ](https://chakra-ui.com/)- React library focused on simplicity and productivity
--   [Formik ](https://formik.org/)- Most used Form lib for React focuses on making easier-to-write forms
+-   [React Hook Form ](https://react-hook-form.com/)- Performant, flexible and extensible forms with easy-to-use validation
 -   [MongoDB ](https://www.mongodb.com/)- NoSQL and really powerful for prototyping and creating ready-to-use apps out of the box
--   [Meteor Cloud ](https://cloud.meteor.com/)- Cloud provider that makes Deploying a Server with, Database included painless
+-   [Meteor Cloud ](https://meteor.com/cloud)- Cloud provider that makes Deploying a Server with, Database included painless
 
 
 Demo: https://simpletasks.meteorapp.com/
 
 Author: [@fredmaiaarantes](https://twitter.com/fredmaiaarantes)
 
-Features:
+Contributors: [@hschmaiske](https://twitter.com/hschmaiske), [@gab_grubba](https://twitter.com/gab_grubba)
+
+### Features:
 - Sign In / Sign Up
 - List Tasks by logged user
 - Add Task

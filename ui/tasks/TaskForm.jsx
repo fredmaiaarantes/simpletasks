@@ -12,7 +12,7 @@ import { ErrorStatus } from '../lib/ErrorStatus';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import * as z from 'zod';
-import { insertTask } from '../../api/tasks/tasks.methods';
+import { insertTask } from '../../api/tasks/tasks.mutations';
 
 export const TaskForm = () => {
   const [errorMessage, setErrorMessage] = useState('');

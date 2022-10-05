@@ -9,7 +9,7 @@ import {
 } from '@chakra-ui/react';
 import { TaskItem } from './TaskItem';
 import React from 'react';
-import { removeTask, toggleTaskDone } from '../../api/tasks/tasks.methods';
+import { removeTask, toggleTaskDone } from '../../api/tasks/tasks.mutations';
 
 export const TaskItems = ({
   tasks,
