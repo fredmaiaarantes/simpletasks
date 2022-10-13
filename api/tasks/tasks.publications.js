@@ -5,6 +5,6 @@ import { z } from 'zod';
 
 export const tasksPublication = createPublication(
   'tasksByLoggedUser',
-  z.any(),
+  z.undefined(),
   () => TasksCollection.find({ userId: Meteor.userId() })
 );
