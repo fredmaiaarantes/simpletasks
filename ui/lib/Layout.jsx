@@ -3,12 +3,11 @@ import {
   ChakraProvider,
   ColorModeScript,
   extendTheme,
-  Spinner,
 } from '@chakra-ui/react';
 import { Navbar } from './Navbar';
 import { Outlet } from 'react-router-dom';
 import { Footer } from './Footer';
-import React, { Suspense } from 'react';
+import React from 'react';
 
 const customTheme = extendTheme({
   config: {
@@ -21,9 +20,7 @@ export const Layout = () => (
   <>
     <ColorModeScript initialColorMode={customTheme.config.initialColorMode} />
     <ChakraProvider theme={customTheme}>
-      <Suspense fallback={<Spinner />}>
-        <Navbar />
-      </Suspense>
+      <Navbar />
       <Box maxW="6xl" mx="auto">
         <Outlet />
       </Box>
