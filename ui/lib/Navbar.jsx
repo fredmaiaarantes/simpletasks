@@ -16,7 +16,7 @@ import { RoutePaths } from './RoutePaths';
 
 export const Navbar = () => {
   const { colorMode, toggleColorMode } = useColorMode();
-  const user = useTracker(() => Meteor.user());
+  const userId = useTracker(() => Meteor.userId());
   const navigate = useNavigate();
 
   const logout = () => {
@@ -63,7 +63,7 @@ export const Navbar = () => {
           >
             {colorMode === 'light' ? <MoonIcon /> : <SunIcon />}
           </Button>
-          {user && (
+          {userId && (
             <Button fontSize="sm" fontWeight={400} onClick={logout}>
               Sign Out
             </Button>
