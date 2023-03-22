@@ -23,7 +23,4 @@ dev-error-overlay@0.1.1
 
 accounts-password@2.3.1
 mdg:seo
-percolate:migrations
 force-ssl@1.1.0
-mdg:meteor-apm-agent
-aldeed:collection2
