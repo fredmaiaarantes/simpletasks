@@ -79,6 +79,8 @@ const checkCursor = <T>(
 // Synchronous data fetch. It uses cursor observing instead of cursor.fetch() because synchronous fetch will be deprecated.
 const fetchData = <T>(cursor: Mongo.Cursor<T>) => {
   const data: T[] = [];
+
+  // in Meteor 3
   cursor
     .observe({
       addedAt(document, atIndex, before) {
@@ -86,12 +88,20 @@ const fetchData = <T>(cursor: Mongo.Cursor<T>) => {
       },
     })
     .then(async o => {
-      const sleep = (ms: number) =>
-        new Promise(resolve => setTimeout(resolve, ms));
-      await sleep(1000);
       o.stop();
     });
 
+  // in Meteor 2.x
+  // new Promise( resolve => {
+  //   const observe = cursor.observe({
+  //     addedAt(document, atIndex, before) {
+  //       data.splice(atIndex, 0, document);
+  //     },
+  //   });
+  //   resolve(observe)
+  // }).then(async o => {
+  //   o.stop();
+  // });
   return data;
 };
 
@@ -158,9 +168,9 @@ const useFindClient = <T = any>(
       // @ts-ignore
       _suppress_initial: true,
     });
-
+    const obs = new Promise(resolve => resolve(observer));
     return () => {
-      observer.then(o => o.stop());
+      obs.then(o => o.stop());
     };
   }, [cursor]);
 

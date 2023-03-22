@@ -10,13 +10,13 @@ import { TaskItem } from './TaskItem';
 import React, { useEffect, useState } from 'react';
 import { removeTask, toggleTaskDone } from '../../api/tasks/tasks.mutations';
 import { Meteor } from 'meteor/meteor';
-// import { useFind } from 'meteor/react-meteor-data';
-// import { useSubscribe } from 'meteor/react-meteor-data/suspense';
+import { useSubscribe } from 'meteor/react-meteor-data/suspense';
 import { TasksCollection } from '../../api/tasks/tasks.collection';
 import { tasksPublication } from '../../api/tasks/tasks.publications';
 import { useTracker } from './useTracker';
 import { useFind } from './useFind';
-import { useSubscribe } from './useSubscribe';
+// import { useFind } from 'meteor/react-meteor-data';
+// import { useSubscribe } from './useSubscribe';
 
 export const TaskItems = () => {
   const [hideDone, setHideDone] = useState(false);
