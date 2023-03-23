@@ -24,9 +24,6 @@ export const TaskItems = () => {
   const userId = useTracker('user', () => Meteor.userId());
   const filter = hideDone ? { done: { $ne: true }, userId } : { userId };
 
-  useEffect(() => {
-    console.log('hideDone changed', hideDone, filter);
-  }, [hideDone]);
 
   const tasks = useFind(
     () =>
