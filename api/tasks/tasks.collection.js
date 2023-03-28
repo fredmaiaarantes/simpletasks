@@ -3,16 +3,7 @@ import { Meteor } from 'meteor/meteor';
 import SimpleSchema from 'simpl-schema';
 
 export const TasksCollection = new Mongo.Collection('tasks');
-Meteor.methods({
-  async addTask({ description }) {
-    return await TasksCollection.insertAsync({
-      description,
-      done: true,
-      userId: Meteor.userId(),
-      createdAt: new Date(),
-    });
-  },
-});
+
 // const TasksSchema = new SimpleSchema({
 //   description: String,
 //   done: {

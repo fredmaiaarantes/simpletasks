@@ -7,23 +7,18 @@ import {
   useColorModeValue,
 } from '@chakra-ui/react';
 import { TaskItem } from './TaskItem';
-import React, { useEffect, useState } from 'react';
-import { removeTask, toggleTaskDone } from '../../api/tasks/tasks.mutations';
+import React, { useState } from 'react';
 import { Meteor } from 'meteor/meteor';
-import { useSubscribe } from 'meteor/react-meteor-data/suspense';
 import { TasksCollection } from '../../api/tasks/tasks.collection';
 import { tasksPublication } from '../../api/tasks/tasks.publications';
-import { useTracker } from './useTracker';
-import { useFind } from './useFind';
-// import { useFind } from 'meteor/react-meteor-data';
-// import { useSubscribe } from './useSubscribe';
+import { useFind } from 'meteor/react-meteor-data';
+import { useSubscribe, useTracker } from 'meteor/react-meteor-data/suspense';
 
 export const TaskItems = () => {
   const [hideDone, setHideDone] = useState(false);
   useSubscribe(tasksPublication.config.name);
   const userId = useTracker('user', () => Meteor.userId());
   const filter = hideDone ? { done: { $ne: true }, userId } : { userId };
-
 
   const tasks = useFind(
     () =>
@@ -76,8 +71,10 @@ export const TaskItems = () => {
         <TaskItem
           key={task._id}
           task={task}
-          onMarkAsDone={taskId => toggleTaskDone({ taskId })}
-          onDelete={taskId => removeTask({ taskId })}
+          onMarkAsDone={taskId =>
+            Meteor.callAsync('toggleTaskDone', { taskId })
+          }
+          onDelete={taskId => Meteor.callAsync('removeTask', { taskId })}
         />
       ))}
     </Box>
