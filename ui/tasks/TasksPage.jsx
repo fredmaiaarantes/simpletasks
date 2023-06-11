@@ -6,13 +6,12 @@ import { TaskItems } from './TaskItems';
 import { Spinner } from '@chakra-ui/react';
 /* eslint-disable import/no-default-export */
 export default function TasksPage() {
-
   return (
     <>
       <TasksHeader />
       <TaskForm />
       <Suspense fallback={<Spinner />}>
-        <TaskItems/>
+        <TaskItems />
       </Suspense>
     </>
   );

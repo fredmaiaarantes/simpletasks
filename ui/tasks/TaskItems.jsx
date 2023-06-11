@@ -8,25 +8,22 @@ import {
 } from '@chakra-ui/react';
 import { TaskItem } from './TaskItem';
 import React, { useState } from 'react';
-import { removeTask, toggleTaskDone } from '../../api/tasks/tasks.mutations';
 import { Meteor } from 'meteor/meteor';
-import { useTracker, useFind } from 'meteor/react-meteor-data';
-import { useSubscribe } from 'meteor/react-meteor-data/suspense';
-import { TasksCollection } from '../../api/tasks/tasks.collection';
-import { tasksPublication } from '../../api/tasks/tasks.publications';
+import { useFind } from 'meteor/react-meteor-data';
+import { useSubscribe, useTracker } from 'meteor/react-meteor-data/suspense';
+import { Tasks } from '../../api/tasks/tasks';
 
 export const TaskItems = () => {
+  useSubscribe('tasksByLoggedUser');
   const [hideDone, setHideDone] = useState(false);
-  useSubscribe(tasksPublication.config.name);
-  const userId = useTracker(() => Meteor.userId());
+  const userId = useTracker('userId', () => Meteor.userId());
   const filter = hideDone ? { done: { $ne: true }, userId } : { userId };
 
-  const tasks = useFind(
-    () => TasksCollection.find(filter, { sort: { createdAt: -1 } }),
-    [hideDone]
-  );
+  const tasks = useFind(() => Tasks.find(filter, { sort: { createdAt: -1 } }), [
+    hideDone,
+  ]);
   const pendingCount = useFind(() =>
-    TasksCollection.find({
+    Tasks.find({
       done: { $ne: true },
       userId,
     })
@@ -67,12 +64,7 @@ export const TaskItems = () => {
         </Stack>
       </HStack>
       {tasks.map(task => (
-        <TaskItem
-          key={task._id}
-          task={task}
-          onMarkAsDone={taskId => toggleTaskDone({ taskId })}
-          onDelete={taskId => removeTask({ taskId })}
-        />
+        <TaskItem key={task._id} task={task} />
       ))}
     </Box>
   );

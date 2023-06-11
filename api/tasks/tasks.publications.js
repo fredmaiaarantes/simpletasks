@@ -1,10 +1,8 @@
 import { Meteor } from 'meteor/meteor';
-import { TasksCollection } from './tasks.collection';
-import { createPublication } from 'grubba-rpc';
-import { z } from 'zod';
+import { Tasks } from './tasks';
 
-export const tasksPublication = createPublication(
-  'tasksByLoggedUser',
-  z.undefined(),
-  () => TasksCollection.find({ userId: Meteor.userId() })
-);
+function findTasksByLoggedUser() {
+  return Tasks.find({ userId: Meteor.userId() });
+}
+
+Meteor.publish('tasksByLoggedUser', findTasksByLoggedUser);

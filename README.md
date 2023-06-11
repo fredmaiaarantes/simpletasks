@@ -143,10 +143,10 @@ Meteor works similarly to[ tRPC](https://trpc.io/) and [Blitz.js](https://blitzj
  * @param {{ taskId: String }}
  * @throws Will throw an error if user is not logged in or is not the task owner.
  */
-export const removeTask = ({ taskId }) => {
-  checkTaskOwner({ taskId });
-  TasksCollection.remove(taskId);
-};
+export const removeTask = ({taskId}) => {
+    checkTaskOwner({taskId});
+    Tasks.remove(taskId);
+  };
 ...
 Meteor.methods({
   insertTask,
