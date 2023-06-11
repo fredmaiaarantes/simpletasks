@@ -74,7 +74,7 @@ meteor deploy <select a subdomain>.meteorapp.com --free --mongo
 
 [//]: # ( TODO document changes)
 
-## Tech Explanation (outdated)
+## Tech Explanation
 
 ### How is the project structured?
 
@@ -127,7 +127,7 @@ For more details, you can check [the package docs](https://github.com/percolates
 
 Schemas are a manner to be sure that the data that comes from the front end is the way we expect it to be and also it is sanitized.
 
-We have decided to use simpl-schema attaching it to our collection as you can see in `api/tasks/tasks.collection.js` by doing this, all data that goes to our Database is validated and follow the structure we defined, you can see how a Task is structured, and having that schema, we can start doing methods and publications.
+We have decided to use `simpl-schema` attaching it to our collection as you can see in `api/tasks/tasks.collection.js` by doing this, all data that goes to our Database is validated and follow the structure we defined, you can see how a Task is structured, and having that schema, we can start doing methods and publications.
 
 Don't forget to check [simpl-schema docs](https://www.npmjs.com/package/simpl-schema) in case of doubts on how to use it.
 
@@ -139,15 +139,19 @@ Meteor works similarly to[ tRPC](https://trpc.io/) and [Blitz.js](https://blitzj
 
 ```javascript
 /**
- * Remove a task.
- * @param {{ taskId: String }}
- * @throws Will throw an error if user is not logged in or is not the task owner.
+ Removes a task from the Tasks collection.
+ @async
+ @function removeTask
+ @param {Object} taskData - The task data.
+ @param {string} taskData.taskId - The ID of the task to remove.
+ @returns {Promise<void>}
  */
-export const removeTask = ({taskId}) => {
-    checkTaskOwner({taskId});
-    Tasks.remove(taskId);
-  };
-...
+async function removeTask({ taskId }) {
+  check(taskId, String);
+  await checkTaskOwner({ taskId });
+  return Tasks.removeAsync(taskId);
+}
+// ...
 Meteor.methods({
   insertTask,
   removeTask,
@@ -157,11 +161,13 @@ Meteor.methods({
 
 So in order to call this server method, we need to do a call for its name. It would look like this:
 
-```javascript
- onDelete={taskId => Meteor.call('removeTask', { taskId })}
-```
+This sample comes from `ui/tasks/TaskItem.jsx`:
 
-This sample comes from `ui/tasks/TaskItems.jsx:`
+```javascript
+async function onDelete(_id) {
+  await Meteor.callAsync('removeTask', { taskId: _id });
+}
+```
 
 #### Subscriptions
 
@@ -183,9 +189,9 @@ For more information, you can check [react-meteor-data repo](https://github.com/
 
 #### Forms
 
-As one of the key parts of the front end, we have chosen a library to help us deal with this piece. Formik is one of the most expressive ways of writing forms in React, a good template for creating this kind of form is located in `ui/tasks/TaskForm.jsx` it is also integrated with Meteor by its call method.
+As one of the key parts of the front end, we have chosen a library to help us deal with this piece. React Hook Form is performant, flexible and extensible library with easy-to-use validation. A good template for creating this kind of form is located in `ui/tasks/TaskForm.jsx` it is also integrated with Zod and Meteor by its call method.
 
-Want to know more and how to create many things with Formik? [their documentation](https://formik.org/docs/overview).
+Want to know more and how to create forms with React Hook Form? [their documentation](https://www.react-hook-form.com).
 
 #### The productivity core: Chakra-UI
 
