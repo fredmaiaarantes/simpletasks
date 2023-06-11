@@ -1,6 +1,6 @@
 import React from 'react';
+import { createRoot } from 'react-dom/client';
 import { Meteor } from 'meteor/meteor';
-import { render } from 'react-dom';
 import { App } from './App';
 
 /**
@@ -8,6 +8,7 @@ import { App } from './App';
  */
 Meteor.startup(() => {
   document.documentElement.setAttribute('lang', 'en');
-  const rootElement = document.getElementById('react-target');
-  render(<App />, rootElement);
+  const container = document.getElementById('react-target');
+  const root = createRoot(container);
+  root.render(<App />);
 });
