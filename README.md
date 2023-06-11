@@ -2,14 +2,14 @@
 Built with my new preferred stack: CHARM (Chakra-UI, React, Meteor).
 
 ## What and why this stack?
-The main goal is to make development as quick and efficient as possible. To achieve this have selected these technologies:
+The main goal is to make development as quick and efficient as possible. To achieve this, I have selected these technologies:
 
--   [Meteor ](https://meteor.com/)- Fullstack Framework focused on productivity that uses RPCs and Sockets for reactivity
--   [React ](https://reactjs.org/)- Minimal UI Library for building on the web
--   [Chakra UI ](https://chakra-ui.com/)- React library focused on simplicity and productivity
--   [React Hook Form ](https://react-hook-form.com/)- Performant, flexible and extensible forms with easy-to-use validation
--   [MongoDB ](https://www.mongodb.com/)- NoSQL and really powerful for prototyping and creating ready-to-use apps out of the box
--   [Meteor Cloud ](https://meteor.com/cloud)- Cloud provider that makes Deploying a Server with, Database included painless
+-   [Meteor ](https://meteor.com/)- A full-stack framework focused on productivity that uses RPCs and Sockets for reactivity.
+-   [React ](https://reactjs.org/)- A minimal UI library for building on the web.
+-   [Chakra UI ](https://chakra-ui.com/)- A React library focused on simplicity and productivity.
+-   [React Hook Form ](https://react-hook-form.com/)- Performant, flexible, and extensible forms with easy-to-use validation.
+-   [MongoDB ](https://www.mongodb.com/)- A NoSQL database that is really powerful for prototyping and creating ready-to-use apps out of the box.
+-   [Meteor Cloud ](https://meteor.com/cloud)-  A cloud provider that makes deploying a server with a database included painless.
 
 
 Demo: https://simpletasks.meteorapp.com/
@@ -20,7 +20,7 @@ Contributors: [@hschmaiske](https://twitter.com/hschmaiske), [@gab_grubba](https
 
 ### Features:
 - Sign In / Sign Up
-- List Tasks by logged user
+- List Tasks by logged-in user
 - Add Task
 - Remove Task
 - Mark Task as Done
@@ -72,15 +72,13 @@ meteor deploy <select a subdomain>.meteorapp.com --free --mongo
 - mdg:seo
 - aldeed:collection2
 
-[//]: # ( TODO document changes)
-
 ## Tech Explanation
 
 ### How is the project structured?
 
 Before explaining, this template is inspired by the works of [Alex Kondov](https://alexkondov.com/): [Tao of Node ](https://alexkondov.com/tao-of-node/) and [Tao of React](https://alexkondov.com/tao-of-react/)
 
-Most Meteor apps are built similar to a monorepo with their divisions for back end and front end declared respectively in `ui ` and `api` folders. You can have a common folder to share code between frontend and backend. For example, if you use TypeScript, you can share types in your codebase.
+Most Meteor apps are built similarly to a monorepo with their divisions for the back end and front end declared respectively in `ui` and `api` folders. You can have a common folder to share code between the frontend and backend. For example, if you use TypeScript, you can share types in your codebase.
 
 ![Project structure](README-Assets/project_structure.png)
 
@@ -90,7 +88,7 @@ We usually place things in the common directory when we have items that will be 
 
 ### Backend decisions
 
-In this template, we have chosen to use Mongo, shipped out of the box with MeteorJS, and added some packages to make it even more productive. That being said, we decided to use `simpl-schema` and`percolate:migrations`, the first one for validating schemas in run-time and the second for creating database migrations.
+In this template, we have chosen to use Mongo, shipped out of the box with Meteor.js, and added some packages to make it even more productive. That being said, we decided to use `simpl-schema` and `percolate:migrations`. The first one is for validating schemas in runtime, and the second one is for creating database migrations.
 
 #### Database Migrations
 
@@ -100,7 +98,7 @@ In this template, we have chosen to use Mongo, shipped out of the box with Meteo
 
 * * *
 
-This is the kind of feature that sometimes comes in handy. Whenever the server starts, it runs the code below that is located in `api/main.js`:
+This is the kind of feature that sometimes comes in handy. Whenever the server starts, it runs the code below located in `api/main.js`:
 
 ```javascript
 import { Meteor } from "meteor/meteor";
@@ -119,23 +117,23 @@ Meteor.startup(() => {
 
 It gathers all migrations that have not been applied and applies them.
 
-A great use for migrations is when you have a change in your database, and you could need everyone to have at least the default data.
+A great use for migrations is when you have a change in your database, and you might need everyone to have at least the default data.
 
 For more details, you can check [the package docs](https://github.com/percolatestudio/meteor-migrations).
 
 #### Schemas
 
-Schemas are a manner to be sure that the data that comes from the front end is the way we expect it to be and also it is sanitized.
+Schemas are a way to ensure that the data coming from the frontend is as expected and sanitized.
 
-We have decided to use `simpl-schema` attaching it to our collection as you can see in `api/tasks/tasks.collection.js` by doing this, all data that goes to our Database is validated and follow the structure we defined, you can see how a Task is structured, and having that schema, we can start doing methods and publications.
+We have decided to use `simpl-schema`, attaching it to our collection as you can see in `api/tasks/tasks.collection.js`. By doing this, all data that goes into our Database is validated and follows the structure we defined. You can see how a Task is structured, and having that schema, we can start implementing methods and publications.
 
 Don't forget to check [simpl-schema docs](https://www.npmjs.com/package/simpl-schema) in case of doubts on how to use it.
 
 #### Server Connection
 
-Following the idea of having a folder for each feature and if it connects to the front end, we need to provide a way to connect.
+Following the idea of having a folder for each feature, and if it connects to the frontend, we need to provide a way to connect.
 
-Meteor works similarly to[ tRPC](https://trpc.io/) and [Blitz.js](https://blitzjs.com/). This model has server functions that get called through a Remote Procedure Call (RPC). In this template, calls that are related to tasks are in the `api/tasks/tasks.methods.js` folder.
+Meteor works similarly to [tRPC](https://trpc.io/) and [Blitz.js](https://blitzjs.com/). This model has server functions that get called through a Remote Procedure Call (RPC). In this template, calls that are related to tasks are in the `api/tasks/tasks.methods.js` folder.
 
 ```javascript
 /**
@@ -159,7 +157,7 @@ Meteor.methods({
 });
 ```
 
-So in order to call this server method, we need to do a call for its name. It would look like this:
+So in order to call this server method, we need to call it by its name. It would look like this:
 
 This sample comes from `ui/tasks/TaskItem.jsx`:
 
@@ -183,13 +181,13 @@ For a good example of Subscriptions, you can look in `ui/tasks/TasksPage.jsx`
 
 #### React with Meteor is &lt;3
 
-As for our frontend framework, we have chosen React for its productive ecosystem and simplicity. Meteor has a package for querying data using hooks, which makes you think about only bringing solutions to life.
+As for our frontend framework, we have chosen React for its productive ecosystem and simplicity. Meteor has a package for querying data using hooks, which makes you think only about bringing solutions to life.
 
 For more information, you can check [react-meteor-data repo](https://github.com/meteor/react-packages/tree/master/packages/react-meteor-data#react-meteor-data) for more details on using the best of them.
 
 #### Forms
 
-As one of the key parts of the front end, we have chosen a library to help us deal with this piece. React Hook Form is performant, flexible and extensible library with easy-to-use validation. A good template for creating this kind of form is located in `ui/tasks/TaskForm.jsx` it is also integrated with Zod and Meteor by its call method.
+As one of the key parts of the frontend, we have chosen a library to help us deal with this piece. React Hook Form is a performant, flexible, and extensible library with easy-to-use validation. A good template for creating this kind of form is located in `ui/tasks/TaskForm.jsx`. It is also integrated with Zod and Meteor by its call method.
 
 Want to know more and how to create forms with React Hook Form? [their documentation](https://www.react-hook-form.com).
 
