@@ -1,5 +1,4 @@
 import React from 'react';
-import { Meteor } from 'meteor/meteor';
 import {
   Box,
   Flex,
@@ -10,20 +9,10 @@ import {
   useColorModeValue,
 } from '@chakra-ui/react';
 import { MoonIcon, SunIcon } from '@chakra-ui/icons';
-import { useNavigate } from 'react-router-dom';
-import { RoutePaths } from './RoutePaths';
-import { useUserId } from 'meteor/react-meteor-accounts';
+import { Logout } from './Logout';
 
 export const Navbar = () => {
   const { colorMode, toggleColorMode } = useColorMode();
-  const userId = useUserId();
-  const navigate = useNavigate();
-
-  const logout = () => {
-    Meteor.logout(() => {
-      navigate(RoutePaths.ROOT);
-    });
-  };
 
   return (
     <Box>
@@ -63,11 +52,7 @@ export const Navbar = () => {
           >
             {colorMode === 'light' ? <MoonIcon /> : <SunIcon />}
           </Button>
-          {userId && (
-            <Button fontSize="sm" fontWeight={400} onClick={logout}>
-              Sign Out
-            </Button>
-          )}
+          <Logout />
         </Stack>
       </Flex>
     </Box>
