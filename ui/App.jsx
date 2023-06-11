@@ -1,8 +1,9 @@
 import { BrowserRouter, Routes as ReactRoutes, Route } from 'react-router-dom';
 import React, { Suspense } from 'react';
-import { Spinner } from '@chakra-ui/react';
 import { Layout } from './lib/Layout';
 import { RoutePaths } from './lib/RoutePaths';
+import { LoggedUserOnly } from './lib/LoggedUserOnly';
+import { Spinner } from '@chakra-ui/react';
 
 const LoginPage = React.lazy(() => import('./auth/LoginPage'));
 const TasksPage = React.lazy(() => import('./tasks/TasksPage'));
@@ -14,7 +15,14 @@ export const App = () => (
       <ReactRoutes>
         <Route path={RoutePaths.ROOT} element={<Layout />}>
           <Route element={<LoginPage />} index />
-          <Route element={<TasksPage />} path={RoutePaths.TASKS} />
+          <Route
+            element={
+              <LoggedUserOnly>
+                <TasksPage />
+              </LoggedUserOnly>
+            }
+            path={RoutePaths.TASKS}
+          />
           <Route element={<NotFoundPage />} path="*" />
         </Route>
       </ReactRoutes>

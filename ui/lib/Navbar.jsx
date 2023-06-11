@@ -10,13 +10,13 @@ import {
   useColorModeValue,
 } from '@chakra-ui/react';
 import { MoonIcon, SunIcon } from '@chakra-ui/icons';
-import { useTracker } from 'meteor/react-meteor-data';
 import { useNavigate } from 'react-router-dom';
 import { RoutePaths } from './RoutePaths';
+import { useUserId } from 'meteor/react-meteor-accounts';
 
 export const Navbar = () => {
   const { colorMode, toggleColorMode } = useColorMode();
-  const userId = useTracker(() => Meteor.userId());
+  const userId = useUserId();
   const navigate = useNavigate();
 
   const logout = () => {

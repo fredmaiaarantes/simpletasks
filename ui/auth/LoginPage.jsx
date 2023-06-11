@@ -17,19 +17,19 @@ import {
 import { useNavigate } from 'react-router-dom';
 import { ErrorStatus } from '../lib/ErrorStatus';
 import { Accounts } from 'meteor/accounts-base';
-import { useTracker } from 'meteor/react-meteor-data';
 import { SignedIn } from './SignedIn';
 import { RoutePaths } from '../lib/RoutePaths';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import * as z from 'zod';
+import { useUserId } from 'meteor/react-meteor-accounts';
 
 /* eslint-disable import/no-default-export */
 export default function LoginPage() {
   const [isSignup, setIsSignup] = useState(false);
   const [showPassword, setShowPassword] = useState(false);
   const [errorMessage, setErrorMessage] = useState('');
-  const userId = useTracker(() => Meteor.userId());
+  const userId = useUserId();
   const navigate = useNavigate();
 
   const schema = z.object({
@@ -101,6 +101,7 @@ export default function LoginPage() {
                 <Input
                   id="username"
                   placeholder="Enter your username"
+                  autoComplete="username"
                   {...register('username')}
                 />
                 <FormErrorMessage>{errors.username?.message}</FormErrorMessage>
@@ -111,6 +112,7 @@ export default function LoginPage() {
                     id="password"
                     type={showPassword ? 'text' : 'password'}
                     placeholder="Enter your password"
+                    autoComplete="current-password"
                     {...register('password')}
                   />
                   <InputRightElement width="4.5rem">

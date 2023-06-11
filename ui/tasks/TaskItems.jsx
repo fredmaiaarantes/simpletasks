@@ -8,15 +8,15 @@ import {
 } from '@chakra-ui/react';
 import { TaskItem } from './TaskItem';
 import React, { useState } from 'react';
-import { Meteor } from 'meteor/meteor';
 import { useFind } from 'meteor/react-meteor-data';
-import { useSubscribe, useTracker } from 'meteor/react-meteor-data/suspense';
+import { useSubscribe } from 'meteor/react-meteor-data/suspense';
 import { Tasks } from '../../api/tasks/tasks';
+import { useUserId } from 'meteor/react-meteor-accounts';
 
 export const TaskItems = () => {
   useSubscribe('tasksByLoggedUser');
   const [hideDone, setHideDone] = useState(false);
-  const userId = useTracker('userId', () => Meteor.userId());
+  const userId = useUserId();
   const filter = hideDone ? { done: { $ne: true }, userId } : { userId };
 
   const tasks = useFind(() => Tasks.find(filter, { sort: { createdAt: -1 } }), [
