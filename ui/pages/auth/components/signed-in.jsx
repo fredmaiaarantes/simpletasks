@@ -1,9 +1,8 @@
 import { Button, Flex, Heading, Stack, Text } from '@chakra-ui/react';
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
-import { RoutePaths } from '../lib/RoutePaths';
 
-export const SignedIn = () => {
+export function SignedIn() {
   const navigate = useNavigate();
   return (
     <Flex align="center" justify="center">
@@ -22,7 +21,7 @@ export const SignedIn = () => {
         </Stack>
         <Stack spacing={10}>
           <Button
-            onClick={() => navigate(RoutePaths.TASKS)}
+            onClick={() => navigate('/tasks')}
             bg="blue.600"
             color="white"
             _hover={{
@@ -35,4 +34,4 @@ export const SignedIn = () => {
       </Stack>
     </Flex>
   );
-};
+}

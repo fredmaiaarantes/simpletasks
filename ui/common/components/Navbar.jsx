@@ -1,17 +1,9 @@
 import React from 'react';
-import {
-  Box,
-  Flex,
-  Text,
-  Button,
-  Stack,
-  useColorMode,
-  useColorModeValue,
-} from '@chakra-ui/react';
+import { Box, Button, Flex, Stack, Text, useColorMode, useColorModeValue } from '@chakra-ui/react';
 import { MoonIcon, SunIcon } from '@chakra-ui/icons';
-import { Logout } from './Logout';
+import { Logout } from './logout';
 
-export const Navbar = () => {
+export function Navbar() {
   const { colorMode, toggleColorMode } = useColorMode();
 
   return (
@@ -50,11 +42,11 @@ export const Navbar = () => {
             onClick={toggleColorMode}
             aria-label={colorMode === 'light' ? 'Moon Icon' : 'Sun Icon'}
           >
-            {colorMode === 'light' ? <MoonIcon /> : <SunIcon />}
+            {colorMode === 'light' ? <MoonIcon/> : <SunIcon/>}
           </Button>
-          <Logout />
+          <Logout/>
         </Stack>
       </Flex>
     </Box>
   );
-};
+}

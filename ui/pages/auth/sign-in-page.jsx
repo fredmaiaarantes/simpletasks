@@ -1,77 +1,38 @@
-import { Meteor } from 'meteor/meteor';
-import React, { useState } from 'react';
+import React from 'react';
 import {
-  Flex,
   Box,
+  Button,
+  Flex,
   FormControl,
+  FormErrorMessage,
+  Heading,
   Input,
-  Stack,
   InputGroup,
   InputRightElement,
-  Button,
-  Heading,
+  Stack,
   Text,
   useColorModeValue,
-  FormErrorMessage,
 } from '@chakra-ui/react';
-import { useNavigate } from 'react-router-dom';
-import { ErrorStatus } from '../lib/ErrorStatus';
-import { Accounts } from 'meteor/accounts-base';
-import { SignedIn } from './SignedIn';
-import { RoutePaths } from '../lib/RoutePaths';
-import { useForm } from 'react-hook-form';
-import { zodResolver } from '@hookform/resolvers/zod';
-import * as z from 'zod';
+import { SignedIn } from './components/signed-in';
 import { useUserId } from 'meteor/react-meteor-accounts';
+import { useLogin } from './hooks/use-login';
 
 /* eslint-disable import/no-default-export */
-export default function LoginPage() {
-  const [isSignup, setIsSignup] = useState(false);
-  const [showPassword, setShowPassword] = useState(false);
-  const [errorMessage, setErrorMessage] = useState('');
+export default function SignInPage() {
   const userId = useUserId();
-  const navigate = useNavigate();
-
-  const schema = z.object({
-    username: z.string().min(1, 'Username is required'),
-    password: z.string().min(1, 'Password is required'),
-  });
-
-  const defaultValues = {
-    username: 'fredmaia',
-    password: 'abc123',
-  };
-
   const {
-    handleSubmit,
+    loginOrCreateUser,
+    isSignup,
+    setIsSignup,
+    showPassword,
+    setShowPassword,
     register,
     formState: { errors, isSubmitting },
-  } = useForm({ defaultValues, resolver: zodResolver(schema) });
-
-  const handleError = error => {
-    if (error) {
-      const reason = error?.reason || 'Sorry, please try again.';
-      setErrorMessage(reason);
-      return;
-    }
-    navigate(RoutePaths.TASKS);
-  };
-
-  const onSubmit = values => {
-    const { username, password } = values;
-    if (isSignup) {
-      Accounts.createUser({ username, password }, error => {
-        handleError(error);
-      });
-    } else {
-      Meteor.loginWithPassword(username, password, error => {
-        handleError(error);
-      });
-    }
-  };
+    handleSubmit,
+  } = useLogin();
 
   if (userId) {
-    return <SignedIn />;
+    return <SignedIn/>;
   }
   return (
     <Flex align="center" justify="center">
@@ -94,8 +55,7 @@ export default function LoginPage() {
           boxShadow="lg"
           p={8}
         >
-          <ErrorStatus status={errorMessage} />
-          <form onSubmit={handleSubmit(onSubmit)}>
+          <form onSubmit={handleSubmit(loginOrCreateUser)}>
             <Stack spacing={4}>
               <FormControl isInvalid={!!errors.username}>
                 <Input

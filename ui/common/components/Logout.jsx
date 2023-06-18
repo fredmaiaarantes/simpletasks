@@ -2,16 +2,15 @@ import React from 'react';
 import { Meteor } from 'meteor/meteor';
 import { Button } from '@chakra-ui/react';
 import { useNavigate } from 'react-router-dom';
-import { RoutePaths } from './RoutePaths';
 import { useUserId } from 'meteor/react-meteor-accounts';
 
-export const Logout = () => {
+export function Logout() {
   const userId = useUserId();
   const navigate = useNavigate();
 
   const logout = () => {
     Meteor.logout(() => {
-      navigate(RoutePaths.ROOT);
+      navigate('/');
     });
   };
 
@@ -24,4 +23,4 @@ export const Logout = () => {
       )}
     </>
   );
-};
+}
