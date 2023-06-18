@@ -17,7 +17,7 @@ export function Footer() {
       as="footer"
       role="contentinfo"
       mx="auto"
-      py="2"
+      mt="12"
       borderTop={1}
       borderStyle="solid"
       borderColor={useColorModeValue('gray.200', 'gray.900')}
