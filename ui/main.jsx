@@ -1,7 +1,7 @@
 import React, { Suspense } from 'react';
 import { createRoot } from 'react-dom/client';
 import { Meteor } from 'meteor/meteor';
-import { UiProvider } from './common/components/ui-provider';
+import { UIProvider } from './common/components/ui-provider';
 import { Loading } from './common/components/loading';
 import { Routes } from './routes';
 
@@ -13,10 +13,10 @@ Meteor.startup(() => {
   const container = document.getElementById('react-target');
   const root = createRoot(container);
   root.render(
-    <UiProvider>
+    <UIProvider>
       <Suspense fallback={<Loading />}>
         <Routes />
       </Suspense>
-    </UiProvider>
+    </UIProvider>
   );
 });
