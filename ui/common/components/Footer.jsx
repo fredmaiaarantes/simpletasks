@@ -1,4 +1,11 @@
-import { Box, ButtonGroup, Divider, IconButton, Stack, Text, useColorModeValue } from '@chakra-ui/react';
+import {
+  Box,
+  ButtonGroup,
+  IconButton,
+  Stack,
+  Text,
+  useColorModeValue,
+} from '@chakra-ui/react';
 import React from 'react';
 import { FaGithub } from '@react-icons/all-files/fa/FaGithub';
 import { FaLinkedin } from '@react-icons/all-files/fa/FaLinkedin';
@@ -10,36 +17,44 @@ export function Footer() {
       as="footer"
       role="contentinfo"
       mx="auto"
-      py="12"
-      px={{
-        base: '4',
-        md: '8',
-      }}
+      py="2"
+      borderTop={1}
+      borderStyle="solid"
+      borderColor={useColorModeValue('gray.200', 'gray.900')}
     >
-      <Stack>
-        <Divider my="5" borderColor={useColorModeValue('gray.400', 'gray.400')}/>
-        <Stack direction="row" spacing="2" align="center" justify="space-between">
+      <Stack
+        px={{
+          base: '2',
+          md: '4',
+        }}
+      >
+        <Stack
+          direction="row"
+          spacing="2"
+          align="center"
+          justify="space-between"
+        >
           <ButtonGroup variant="ghost" color="gray.600">
             <IconButton
               as="a"
               target="_blank"
               href="https://github.com/fredmaiaarantes/simpletasks"
               aria-label="GitHub"
-              icon={<FaGithub fontSize="20px"/>}
+              icon={<FaGithub fontSize="20px" />}
             />
             <IconButton
               as="a"
               target="_blank"
               href="https://twitter.com/fredmaiaarantes"
               aria-label="Twitter"
-              icon={<FaTwitter fontSize="20px"/>}
+              icon={<FaTwitter fontSize="20px" />}
             />
             <IconButton
               as="a"
               target="_blank"
               href="https://linkedin.com/in/fredmaiaarantes"
               aria-label="LinkedIn"
-              icon={<FaLinkedin fontSize="20px"/>}
+              icon={<FaLinkedin fontSize="20px" />}
             />
           </ButtonGroup>
         </Stack>
