@@ -1,29 +1,9 @@
 import React, { memo } from 'react';
-import { Box, Button, Checkbox, HStack, Stack, useToast } from '@chakra-ui/react';
-import { Meteor } from 'meteor/meteor';
+import { Box, Button, Checkbox, HStack, Stack } from '@chakra-ui/react';
+import { useTaskItem } from '../hooks/use-task-item';
 
 export const TaskItem = memo(({ task }) => {
-  const toast = useToast();
-
-  async function onMarkAsDone(_id) {
-    await Meteor.callAsync('toggleTaskDone', { taskId: _id });
-  }
-
-  async function onDelete(_id) {
-    try {
-      await Meteor.callAsync('removeTask', { taskId: _id });
-      toast({
-        title: 'Task removed.',
-        status: 'success',
-      });
-    } catch (error) {
-      toast({
-        title: 'An error occurred.',
-        description: error.message,
-        status: 'error',
-      });
-    }
-  }
+  const { onDelete, onMarkAsDone } = useTaskItem();
 
   return (
     <HStack mt={4}>
