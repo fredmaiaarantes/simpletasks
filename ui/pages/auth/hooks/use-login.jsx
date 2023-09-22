@@ -23,11 +23,10 @@ export function useLogin() {
   const [showPassword, setShowPassword] = useState(false);
   const navigate = useNavigate();
 
-  const {
-    handleSubmit,
-    register,
-    formState,
-  } = useForm({ defaultValues, resolver: zodResolver(schema) });
+  const { handleSubmit, register, formState } = useForm({
+    defaultValues,
+    resolver: zodResolver(schema),
+  });
 
   const handleError = error => {
     if (error) {
