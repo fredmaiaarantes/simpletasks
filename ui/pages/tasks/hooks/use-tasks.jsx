@@ -9,7 +9,12 @@ export function useTasks() {
   const [hideDone, setHideDone] = useState(false);
   const filter = hideDone ? { done: { $ne: true }, userId } : { userId };
 
-  const tasks = useFind(Tasks, [filter, { sort: { createdAt: -1 } }], [hideDone]);
+  const tasks = useFind(
+    Tasks,
+    [filter, { sort: { createdAt: -1 } }],
+    [hideDone]
+  );
+  const count = useFind(Tasks, [{ userId }]).length;
   const pendingCount = useFind(Tasks, [{ done: { $ne: true }, userId }]).length;
 
   return {
@@ -17,5 +22,6 @@ export function useTasks() {
     setHideDone,
     tasks,
     pendingCount,
+    count,
   };
 }
