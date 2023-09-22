@@ -1,6 +1,6 @@
 import React from 'react';
 import { BrowserRouter, Route, Routes as ReactRoutes } from 'react-router-dom';
-import { Layout } from './common/components/Layout';
+import { Layout } from './common/components/layout';
 
 export const routes = {
   root: '/',

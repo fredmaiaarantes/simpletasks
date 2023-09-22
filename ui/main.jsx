@@ -2,7 +2,7 @@ import React, { Suspense } from 'react';
 import { createRoot } from 'react-dom/client';
 import { Meteor } from 'meteor/meteor';
 import { UIProvider } from './common/components/ui-provider';
-import { Loading } from './common/components/Loading';
+import { Loading } from './common/components/loading';
 import { Routes } from './routes';
 
 /**
