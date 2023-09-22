@@ -8,7 +8,7 @@ export const routes = {
   tasks: '/tasks',
 };
 
-const LoginPage = React.lazy(() => import('./pages/auth/sign-in-page'));
+const SignInPage = React.lazy(() => import('./pages/auth/sign-in-page'));
 const NotFoundPage = React.lazy(() =>
   import('./pages/not-found/not-found-page')
 );
@@ -21,7 +21,7 @@ export function Routes() {
         <Route
           element={
             <Layout loggedOnly={false}>
-              <LoginPage />
+              <SignInPage />
             </Layout>
           }
           index

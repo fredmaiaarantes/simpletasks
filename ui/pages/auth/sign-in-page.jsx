@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import {
   Box,
   Button,
@@ -15,13 +15,12 @@ import {
 } from '@chakra-ui/react';
 import { useUserId } from 'meteor/react-meteor-accounts';
 import { useLogin } from './hooks/use-login';
-import { useNavigate } from 'react-router-dom';
+import { Navigate } from 'react-router-dom';
 import { routes } from '../../routes';
 
 /* eslint-disable import/no-default-export */
 export default function SignInPage() {
   const userId = useUserId();
-  const navigate = useNavigate();
   const {
     loginOrCreateUser,
     isSignup,
@@ -33,11 +32,9 @@ export default function SignInPage() {
     handleSubmit,
   } = useLogin();
 
-  useEffect(() => {
-    if (userId) {
-      navigate(routes.tasks);
-    }
-  }, [userId]);
+  if (userId) {
+    return <Navigate to={routes.tasks} />;
+  }
 
   return (
     <Flex align="center" justify="center">
