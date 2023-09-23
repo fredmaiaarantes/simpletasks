@@ -47,6 +47,9 @@ mdg:meteor-apm-agent@3.5.1
 mdg:seo@3.5.0
 meteor@1.11.3
 meteor-base@1.5.1
+meteortesting:browser-tests@1.4.2
+meteortesting:mocha@2.1.0
+meteortesting:mocha-core@8.0.1
 minifier-css@1.6.4
 minifier-js@2.7.5
 minimongo@1.9.3

@@ -5,6 +5,7 @@
   "private": true,
   "scripts": {
     "start": "meteor run --exclude-archs web.browser.legacy,web.cordova",
+    "test": "meteor test --once --driver-package meteortesting:mocha",
     "eslint": "eslint . --fix",
     "prettier": "prettier --write \"**/*.js\" \"**/*.jsx\"",
     "check": "npm run eslint && npm run prettier",
@@ -35,13 +36,15 @@
     "@types/meteor": "^2.9.4",
     "@types/mocha": "^9.1.1",
     "@types/react": "^18.2.22",
-    "@types/react-dom": "^18.2.7"
+    "@types/react-dom": "^18.2.7",
+    "chai": "^4.3.8"
   },
   "meteor": {
     "mainModule": {
       "client": "ui/main.jsx",
       "server": "api/main.js"
-    }
+    },
+    "testModule": "tests/main.js"
   },
   "husky": {
     "hooks": {
