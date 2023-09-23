@@ -162,7 +162,7 @@ Meteor.methods({
 
 So in order to call this server method, we need to call it by its name. It would look like this:
 
-This sample comes from `ui/tasks/TaskItem.jsx`:
+This sample comes from `ui/tasks/components/task-item.jsx`:
 
 ```javascript
 async function onDelete(_id) {
@@ -176,7 +176,7 @@ MeteorJS supports subscriptions out of the box as can be seen in `api/tasks/task
 
 > For using a subscription as you can see in our docs, is similar to using methods. In React we use meteor/react-meteor-data for having a react way of calling those methods
 
-For a good example of Subscriptions, you can look in `ui/tasks/TasksPage.jsx`
+For a good example of Subscriptions, you can look in `ui/tasks/tasks-page.jsx`
 
 ### Frontend decisions
 
