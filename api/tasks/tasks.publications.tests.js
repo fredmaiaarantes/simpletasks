@@ -35,5 +35,13 @@ describe('Tasks', function() {
 
       expect(tasks.length).to.be.equal(0);
     });
+
+    it('should not return any task if not authenticated', async () => {
+      mockLoggedUserId(null);
+      const publication = getMeteorPublication('tasksByLoggedUser');
+      const tasks = await publication.fetchAsync();
+
+      expect(tasks.length).to.be.equal(0);
+    });
   });
 });
