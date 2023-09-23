@@ -186,13 +186,13 @@ For a good example of Subscriptions, you can look in `ui/tasks/TasksPage.jsx`
 
 As for our frontend framework, we have chosen React for its productive ecosystem and simplicity. Meteor has a package for querying data using hooks, which makes you think only about bringing solutions to life.
 
-For more information, you can check [react-meteor-data repo](https://github.com/meteor/react-packages/tree/master/packages/react-meteor-data#react-meteor-data) for more details on using the best of them.
+For more information, you can check [react-meteor-data repository](https://github.com/meteor/react-packages/tree/master/packages/react-meteor-data#react-meteor-data) for more details on using the best of them.
 
 #### Forms
 
-As one of the key parts of the front end, we have chosen a library to help us deal with this piece. React Hook Form is a performant, flexible, and extensible library with easy-to-use validation. A good template for creating this kind of form is located in `ui/tasks/TaskForm.jsx`. It is also integrated with Zod and Meteor by its call method.
+As one of the key parts of the front end, we have chosen a library to help us deal with this piece. React Hook Form is a performant, flexible, and extensible library with easy-to-use validation. A good template for creating this kind of form is located in `ui/pages/tasks/components/task-form.jsx`. It is also integrated with Zod and Meteor by its call method.
 
-Want to know more about how to create forms with React Hook Form? [their documentation](https://www.react-hook-form.com).
+Want to know more about how to create forms with React Hook Form? Check [their documentation](https://www.react-hook-form.com).
 
 #### The productivity core: Chakra-UI
 
@@ -202,7 +202,7 @@ Want to know more about how to create forms with React Hook Form? [their documen
 
 For our UI components, we have chosen Chakra UI because of its productivity that matches what Meteor does in the backend creating a lovely flow with an outstanding Developer Experience.
 
-We have included Dark and Light modes. It can be seen those configs in `ui/App.jsx`
+We have included Dark and Light modes. It can be seen those configs in `ui/common/components/ui-provider.jsx`.
 
 You can see Chakra-UI's full component list on [their website](https://chakra-ui.com/getting-started).
 
