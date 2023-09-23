@@ -3,10 +3,7 @@ import { Random } from 'meteor/random';
 import { Tasks } from '/api/tasks/tasks';
 import { assert, expect } from 'chai';
 import '/api/tasks/tasks.methods';
-
-function mockLoggedUserId(userId) {
-  Meteor.userId = () => userId;
-}
+import { mockLoggedUserId } from '../../tests/helpers';
 
 if (Meteor.isServer) {
   describe('Tasks', () => {

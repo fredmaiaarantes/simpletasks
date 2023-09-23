@@ -1,13 +1,9 @@
-import { Meteor } from 'meteor/meteor';
 import { expect } from 'chai';
 
 import { Tasks } from './tasks';
 import { Random } from 'meteor/random';
 import '/api/tasks/tasks.publications';
-
-function mockLoggedUserId(userId) {
-  Meteor.userId = () => userId;
-}
+import { getMeteorPublication, mockLoggedUserId } from '../../tests/helpers';
 
 describe('Tasks', function() {
   describe('publications', () => {
@@ -25,7 +21,7 @@ describe('Tasks', function() {
     });
 
     it('should return tasks from the authenticated user', async () => {
-      const publication = Meteor.server.publish_handlers.tasksByLoggedUser.apply();
+      const publication = getMeteorPublication('tasksByLoggedUser');
       const tasks = await publication.fetchAsync();
 
       expect(tasks.length).to.be.equal(1);
@@ -34,7 +30,7 @@ describe('Tasks', function() {
 
     it('should not return any task to the user who does not have any', async () => {
       mockLoggedUserId(Random.id());
-      const publication = Meteor.server.publish_handlers.tasksByLoggedUser.apply();
+      const publication = getMeteorPublication('tasksByLoggedUser');
       const tasks = await publication.fetchAsync();
 
       expect(tasks.length).to.be.equal(0);
