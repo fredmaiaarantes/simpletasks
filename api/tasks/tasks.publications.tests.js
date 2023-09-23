@@ -18,7 +18,7 @@ describe('Tasks', function() {
       userId,
     };
 
-    beforeEach(async function() {
+    beforeEach(async () => {
       mockLoggedUserId(userId);
       await Tasks.removeAsync({});
       await Tasks.insertAsync(originalTask);
