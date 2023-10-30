@@ -1,6 +1,0 @@
-.build*
-smart.lock
-versions.json
-*.swp
-.idea/
-/.versions
