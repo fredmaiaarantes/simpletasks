@@ -11,6 +11,7 @@ describe('Tasks', function() {
     const originalTask = {
       description: 'Groceries',
       createdAt: new Date(),
+      done: false,
       userId,
     };
 

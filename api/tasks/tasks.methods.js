@@ -17,6 +17,7 @@ async function insertTask({ description }) {
   checkLoggedIn();
   const task = {
     description,
+    done: false,
     userId: Meteor.userId(),
     createdAt: new Date(),
   };

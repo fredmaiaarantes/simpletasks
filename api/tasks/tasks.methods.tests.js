@@ -16,6 +16,7 @@ if (Meteor.isServer) {
         await Tasks.removeAsync({});
         taskId = await Tasks.insertAsync({
           description: 'Test Task',
+          done: false,
           createdAt: new Date(),
           userId,
         });

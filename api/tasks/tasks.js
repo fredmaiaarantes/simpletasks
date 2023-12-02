@@ -1,19 +1,13 @@
 import { Mongo } from 'meteor/mongo';
-import SimpleSchema from 'simpl-schema';
 
 export const Tasks = new Mongo.Collection('tasks');
 
-const TasksSchema = new SimpleSchema({
+const schema = {
+  _id: String,
   description: String,
-  done: {
-    type: Boolean,
-    defaultValue: false,
-  },
-  userId: {
-    type: String,
-    regEx: SimpleSchema.RegEx.Id,
-  },
+  done: Boolean,
   createdAt: Date,
-});
+  userId: String,
+};
 
-Tasks.attachSchema(TasksSchema);
+Tasks.attachSchema(schema);
