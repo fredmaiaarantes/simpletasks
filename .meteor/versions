@@ -45,9 +45,9 @@ localstorage@1.2.1-alpha300.19
 logging@1.3.3-alpha300.19
 meteor@2.0.0-alpha300.19
 meteor-base@1.5.2-alpha300.19
-meteortesting:browser-tests@1.4.2
-meteortesting:mocha@2.1.0
-meteortesting:mocha-core@8.0.1
+meteortesting:browser-tests@1.5.3
+meteortesting:mocha@3.0.3-alpha300.11
+meteortesting:mocha-core@8.2.2-alpha300.11
 minifier-css@2.0.0-alpha300.19
 minifier-js@3.0.0-alpha300.19
 minimongo@2.0.0-alpha300.19
@@ -68,7 +68,7 @@ quave:migrations@2.0.2
 random@1.2.2-alpha300.19
 rate-limit@1.1.2-alpha300.19
 react-fast-refresh@0.2.8-alpha300.19
-react-meteor-accounts@1.0.0
+react-meteor-accounts@1.0.2
 react-meteor-data@2.7.2
 reactive-var@1.0.13-alpha300.19
 reload@1.3.2-alpha300.19
