@@ -26,4 +26,4 @@ accounts-password@3.0.0-alpha300.19
 quave:migrations
 force-ssl@1.1.1-alpha300.19
 react-meteor-accounts@1.0.2
-meteortesting:mocha@3.0.0
+meteortesting:mocha@3.0.3-alpha300.11
