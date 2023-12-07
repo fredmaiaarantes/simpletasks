@@ -1,7 +1,6 @@
 import { Meteor } from 'meteor/meteor';
 import { Migrations } from 'meteor/percolate:migrations';
 
-import './shutdown-handler';
 import './db/migrations';
 import './tasks/tasks.publications';
 import './tasks/tasks.methods';
