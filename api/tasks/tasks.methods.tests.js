@@ -13,12 +13,19 @@ if (Meteor.isServer) {
 
       beforeEach(async () => {
         mockLoggedUserId(userId);
-        await Tasks.removeAsync({});
+        await Tasks.removeAsync({})
+          .catch((error) => {
+            // eslint-disable-next-line no-console
+            console.error(error);
+          });
         taskId = await Tasks.insertAsync({
           description: 'Test Task',
           done: false,
           createdAt: new Date(),
           userId,
+        }).catch((error) => {
+          // eslint-disable-next-line no-console
+          console.error(error);
         });
       });
 
