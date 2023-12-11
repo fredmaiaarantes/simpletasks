@@ -2,7 +2,7 @@
 Running with **Meteor 3.0** and Node 20.
 Built with the CHARM (Chakra-UI, React, Meteor) stack.
 
-Demo: https://simpletasks.meteorapp.com/
+Deployed to Galaxy: https://simpletasks.meteorapp.com/
 
 ## What and why this stack?
 The main goal is to make development as quick and efficient as possible. To achieve this, I have selected these technologies:
