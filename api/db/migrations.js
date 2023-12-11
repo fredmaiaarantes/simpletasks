@@ -1,41 +1,41 @@
-import { Meteor } from 'meteor/meteor';
-import { Migrations } from 'meteor/percolate:migrations';
+import { Migrations } from 'meteor/quave:migrations';
 import { Accounts } from 'meteor/accounts-base';
 import { Tasks } from '../tasks/tasks';
 
 Migrations.add({
   version: 1,
   name: 'Add a seed username and password.',
-  up: Meteor.wrapAsync(async (_, next) => {
+  up: async function() {
     await Accounts.createUserAsync({
       username: 'fredmaia',
       password: 'abc123',
     });
-    next();
-  }),
+  },
 });
 
 Migrations.add({
   version: 2,
   name: 'Add a few sample tasks.',
-  up: Meteor.wrapAsync(async (_, next) => {
+  up: async function() {
     const createdAt = new Date();
-    const { _id: userId } = Accounts.findUserByUsername('fredmaia');
+    const user = await Accounts.findUserByUsername('fredmaia');
     await Tasks.insertAsync({
-      description: 'Install Node@14',
-      userId,
+      description: 'Install Node@20',
+      done: false,
+      userId: user._id,
       createdAt,
     });
     await Tasks.insertAsync({
       description: 'Install MeteorJS',
-      userId,
+      done: false,
+      userId: user._id,
       createdAt,
     });
     await Tasks.insertAsync({
       description: 'Clone this repository',
-      userId,
+      done: false,
+      userId: user._id,
       createdAt,
     });
-    next();
-  }),
+  },
 });
