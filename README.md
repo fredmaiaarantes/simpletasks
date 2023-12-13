@@ -73,7 +73,7 @@ meteor deploy <select a subdomain>.meteorapp.com --free --mongo
 - percolate:migrations
 - force-ssl
 - mdg:seo
-- aldeed:collection2
+- jam:easy-schema
 - meteortesting:mocha
 
 ## Tech Explanation
@@ -129,9 +129,9 @@ For more details, you can check [the package docs](https://github.com/percolates
 
 Schemas are a way to ensure that the data coming from the front is as expected and sanitized.
 
-We have decided to use `simpl-schema`, attaching it to our collection as you can see in `api/tasks/tasks.collection.js`. By doing this, all data that goes into our Database is validated and follows the structure we defined. You can see how a Task is structured, and having that schema, we can start implementing methods and publications.
+We have decided to use `jam:easy-schema`, attaching it to our collection as you can see in `api/tasks/tasks.collection.js`. By doing this, all data that goes into our Database is validated and follows the structure we defined. You can see how a Task is structured, and having that schema, we can start implementing methods and publications.
 
-Don't forget to check [simpl-schema docs](https://www.npmjs.com/package/simpl-schema) in case of doubts about how to use it.
+Don't forget to check [jam:easy-schema docs](https://github.com/jamauro/easy-schema) in case of doubts about how to use it.
 
 #### Server Connection
 
