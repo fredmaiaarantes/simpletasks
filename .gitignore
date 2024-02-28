@@ -62,3 +62,7 @@ typings/
 # webstorm
 **/.idea/*
 !.idea/runConfigurations
+
+**/.vscode/*
+
+jsconfig.json
