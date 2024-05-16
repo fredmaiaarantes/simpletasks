@@ -4,7 +4,7 @@
   "version": "1.0.3",
   "private": true,
   "scripts": {
-    "start": "meteor run --exclude-archs web.browser.legacy,web.cordova",
+    "start": "meteor --exclude-archs web.browser.legacy,web.cordova --settings private/settings.dev.json",
     "test": "meteor test --once --driver-package meteortesting:mocha",
     "eslint": "eslint . --fix",
     "prettier": "prettier --write \"**/*.js\" \"**/*.jsx\"",
