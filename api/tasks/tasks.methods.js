@@ -30,7 +30,7 @@ async function insertTask({ description }) {
  @function removeTask
  @param {Object} taskData - The task data.
  @param {string} taskData.taskId - The ID of the task to remove.
- @returns {Promise<void>}
+ @returns {Promise<number>}
  */
 async function removeTask({ taskId }) {
   check(taskId, String);
@@ -44,7 +44,7 @@ async function removeTask({ taskId }) {
  @function toggleTaskDone
  @param {Object} taskData - The task data.
  @param {string} taskData.taskId - The ID of the task to toggle.
- @returns {Promise<void>}
+ @returns {Promise<number>}
  */
 async function toggleTaskDone({ taskId }) {
   check(taskId, String);
