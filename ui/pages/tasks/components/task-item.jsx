@@ -12,6 +12,7 @@ export const TaskItem = memo(({ task }) => {
           colorScheme="green"
           isChecked={task.done}
           onChange={() => onMarkAsDone(task._id)}
+          style={{ textDecoration: task.done ? 'line-through' : 'none' }}
         >
           {task.description}
         </Checkbox>
