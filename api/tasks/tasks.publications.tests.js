@@ -1,11 +1,11 @@
 import { expect } from 'chai';
 
-import { Tasks } from './tasks';
 import { Random } from 'meteor/random';
+import { Tasks } from './tasks';
 import '/api/tasks/tasks.publications';
 import { getMeteorPublication, mockLoggedUserId } from '../../tests/helpers';
 
-describe('Tasks', function() {
+describe('Tasks', () => {
   describe('publications', () => {
     const userId = Random.id();
     const originalTask = {

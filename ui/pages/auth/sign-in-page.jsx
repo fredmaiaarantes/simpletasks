@@ -1,4 +1,3 @@
-import React from 'react';
 import {
   Box,
   Button,
@@ -14,11 +13,11 @@ import {
   useColorModeValue,
 } from '@chakra-ui/react';
 import { useUserId } from 'meteor/react-meteor-accounts';
-import { useLogin } from './hooks/use-login';
+import React from 'react';
 import { Navigate } from 'react-router-dom';
 import { routes } from '../../routes';
+import { useLogin } from './hooks/use-login';
 
-/* eslint-disable import/no-default-export */
 export default function SignInPage() {
   const userId = useUserId();
   const {

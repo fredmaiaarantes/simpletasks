@@ -1,7 +1,6 @@
-import React from 'react';
 import { Flex, Heading, Stack } from '@chakra-ui/react';
+import React from 'react';
 
-/* eslint-disable import/no-default-export */
 export default function NotFoundPage() {
   return (
     <Flex align="center" justify="center">

@@ -6,9 +6,7 @@
   "scripts": {
     "start": "meteor --exclude-archs web.browser.legacy,web.cordova --settings private/settings.dev.json",
     "test": "meteor test --once --driver-package meteortesting:mocha",
-    "eslint": "eslint . --fix",
-    "prettier": "prettier --write \"**/*.js\" \"**/*.jsx\"",
-    "check": "npm run eslint && npm run prettier",
+    "check": "npx @biomejs/biome check --write ./**/*.{js,jsx}",
     "visualize": "meteor --production --extra-packages bundle-visualizer"
   },
   "dependencies": {
@@ -31,11 +29,11 @@
     "zod": "^3.23.8"
   },
   "devDependencies": {
-    "@quave/eslint-config-quave": "^1.0.7",
+    "@biomejs/biome": "1.8.3",
     "@types/meteor": "^2.9.8",
     "@types/mocha": "^9.1.1",
     "@types/react": "^18.3.3",
-    "@types/react-dom": "^18.3.0",
+    "@types/react-dom": "^18.3.0" ,
     "chai": "^4.4.1"
   },
   "meteor": {
@@ -52,25 +50,13 @@
     }
   },
   "lint-staged": {
-    "*.{js|jsx}": [
-      "eslint --fix",
-      "prettier --write",
-      "git add"
+    "*.{js,jsx}": [
+      "biome check --files-ignore-unknown=true",
+      "biome check --write --no-errors-on-unmatched",
+      "biome check --write --organize-imports-enabled=false --no-errors-on-unmatched",
+      "biome check --write --unsafe --no-errors-on-unmatched",
+      "biome format --write --no-errors-on-unmatched",
+      "biome lint --write --no-errors-on-unmatched"
     ]
-  },
-  "eslintConfig": {
-    "extends": [
-      "@quave/quave"
-    ],
-    "settings": {
-      "import/resolver": {
-        "meteor": {
-          "extensions": [
-            ".js",
-            ".jsx"
-          ]
-        }
-      }
-    }
   }
 }

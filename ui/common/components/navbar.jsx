@@ -1,4 +1,4 @@
-import React from 'react';
+import { MoonIcon, SunIcon } from '@chakra-ui/icons';
 import {
   Box,
   Button,
@@ -8,7 +8,7 @@ import {
   useColorMode,
   useColorModeValue,
 } from '@chakra-ui/react';
-import { MoonIcon, SunIcon } from '@chakra-ui/icons';
+import React from 'react';
 import { Logout } from './logout';
 
 export function Navbar() {

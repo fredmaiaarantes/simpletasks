@@ -6,10 +6,10 @@ import {
   Text,
   useColorModeValue,
 } from '@chakra-ui/react';
-import React from 'react';
 import { FaGithub } from '@react-icons/all-files/fa/FaGithub';
 import { FaLinkedin } from '@react-icons/all-files/fa/FaLinkedin';
 import { FaTwitter } from '@react-icons/all-files/fa/FaTwitter';
+import React from 'react';
 
 export function Footer() {
   return (
@@ -66,11 +66,15 @@ export function Footer() {
           }}
         >
           &copy; {new Date().getFullYear()} Charm (Chakra-UI, React,{' '}
-          <a href="https://meteor.com" target="_blank">
+          <a href="https://meteor.com" target="_blank" rel="noreferrer">
             Meteor.js
           </a>
           ) by{' '}
-          <a href="https://twitter.com/fredmaiaarantes" target="_blank">
+          <a
+            href="https://twitter.com/fredmaiaarantes"
+            target="_blank"
+            rel="noreferrer"
+          >
             @fredmaiaarantes
           </a>
           .

@@ -1,5 +1,5 @@
-import React, { memo } from 'react';
 import { Box, Button, Checkbox, HStack, Stack } from '@chakra-ui/react';
+import React, { memo } from 'react';
 import { useTaskItem } from '../hooks/use-task-item';
 
 export const TaskItem = memo(({ task }) => {

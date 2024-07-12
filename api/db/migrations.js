@@ -5,7 +5,7 @@ import { Tasks } from '../tasks/tasks';
 Migrations.add({
   version: 1,
   name: 'Add a seed username and password.',
-  up: async function() {
+  async up() {
     await Accounts.createUserAsync({
       username: 'fredmaia',
       password: 'abc123',
@@ -16,7 +16,7 @@ Migrations.add({
 Migrations.add({
   version: 2,
   name: 'Add a few sample tasks.',
-  up: async function() {
+  async up() {
     const createdAt = new Date();
     const user = await Accounts.findUserByUsername('fredmaia');
     await Tasks.insertAsync({

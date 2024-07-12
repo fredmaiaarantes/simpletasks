@@ -1,5 +1,5 @@
-import { Meteor } from 'meteor/meteor';
 import { Migrations } from 'meteor/quave:migrations';
+import { Meteor } from 'meteor/meteor';
 
 import './db/migrations';
 import './tasks/tasks.publications';

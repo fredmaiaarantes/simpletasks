@@ -1,9 +1,22 @@
+import {
+  Box,
+  Button,
+  FormControl,
+  FormErrorMessage,
+  Input,
+  InputGroup,
+  InputRightElement,
+} from '@chakra-ui/react';
 import React from 'react';
-import { Box, Button, FormControl, FormErrorMessage, Input, InputGroup, InputRightElement } from '@chakra-ui/react';
 import { useTaskForm } from '../hooks/use-task-form';
 
 export function TaskForm() {
-  const { saveTask, handleSubmit, register, formState: { errors, isSubmitting } } = useTaskForm();
+  const {
+    saveTask,
+    handleSubmit,
+    register,
+    formState: { errors, isSubmitting },
+  } = useTaskForm();
 
   return (
     <Box>

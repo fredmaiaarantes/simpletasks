@@ -58,7 +58,7 @@ meteor deploy <select a subdomain>.meteorapp.com --free --mongo
 
 ## Done
 - Integrate to Chakra-UI
-- Use ESLint, Prettier, and Husky
+- Use Husky and Biome
 - Host in Galaxy
 - Meteor APM monitoring
 - Use React Router 6 and Lazy Loading

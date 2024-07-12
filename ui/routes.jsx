@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowserRouter, Route, Routes as ReactRoutes } from 'react-router-dom';
+import { BrowserRouter, Routes as ReactRoutes, Route } from 'react-router-dom';
 import { Layout } from './common/components/layout';
 
 export const routes = {
@@ -9,8 +9,8 @@ export const routes = {
 };
 
 const SignInPage = React.lazy(() => import('./pages/auth/sign-in-page'));
-const NotFoundPage = React.lazy(() =>
-  import('./pages/not-found/not-found-page')
+const NotFoundPage = React.lazy(
+  () => import('./pages/not-found/not-found-page')
 );
 const TasksPage = React.lazy(() => import('./pages/tasks/tasks-page'));
 

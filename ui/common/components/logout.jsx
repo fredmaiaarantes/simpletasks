@@ -1,8 +1,8 @@
-import React from 'react';
-import { Meteor } from 'meteor/meteor';
 import { Button } from '@chakra-ui/react';
-import { useNavigate } from 'react-router-dom';
+import { Meteor } from 'meteor/meteor';
 import { useUserId } from 'meteor/react-meteor-accounts';
+import React from 'react';
+import { useNavigate } from 'react-router-dom';
 
 export function Logout() {
   const userId = useUserId();

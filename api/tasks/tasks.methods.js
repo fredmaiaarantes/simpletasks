@@ -1,7 +1,7 @@
-import { Tasks } from './tasks';
+import { check } from 'meteor/check';
 import { Meteor } from 'meteor/meteor';
 import { checkLoggedIn, checkTaskOwner } from '../lib/auth';
-import { check } from 'meteor/check';
+import { Tasks } from './tasks';
 
 /**
 

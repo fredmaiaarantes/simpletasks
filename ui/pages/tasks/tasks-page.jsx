@@ -1,19 +1,18 @@
-import React, { Suspense } from 'react';
-import { TaskForm } from './components/task-form';
 import {
   Box,
   Button,
-  Heading,
   HStack,
+  Heading,
   Spinner,
   Stack,
   Text,
   useColorModeValue,
 } from '@chakra-ui/react';
+import React, { Suspense } from 'react';
+import { TaskForm } from './components/task-form';
 import { TaskItem } from './components/task-item';
 import { useTasks } from './hooks/use-tasks';
 
-/* eslint-disable import/no-default-export */
 export default function TasksPage() {
   const { hideDone, setHideDone, tasks, count, pendingCount } = useTasks();
   return (
@@ -64,7 +63,7 @@ export default function TasksPage() {
               </Button>
             </Stack>
           </HStack>
-          {tasks.map(task => (
+          {tasks.map((task) => (
             <TaskItem key={task._id} task={task} />
           ))}
         </Box>
