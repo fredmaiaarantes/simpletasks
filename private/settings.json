@@ -12,5 +12,11 @@
         "secret": "REPLACE_WITH_YOUR_SECRET"
       }
     }
+  },
+  "galaxy.meteor.com": {
+    "env": {
+      "ROOT_URL": "REPLACE_WITH_YOUR_DOMAIN",
+      "MONGO_URL": "REPLACE_WITH_YOUR_MONGO_URL"
+    }
   }
 }
