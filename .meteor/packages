@@ -28,3 +28,5 @@ react-meteor-accounts@1.0.3-rc300.0
 react-meteor-data@3.0.0
 montiapm:agent
 zodern:standard-minifier-js
+accounts-github
+service-configuration

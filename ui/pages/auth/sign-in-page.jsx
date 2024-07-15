@@ -12,6 +12,7 @@ import {
   Text,
   useColorModeValue,
 } from '@chakra-ui/react';
+import { FaGithub } from '@react-icons/all-files/fa/FaGithub';
 import { useUserId } from 'meteor/react-meteor-accounts';
 import React from 'react';
 import { Navigate } from 'react-router-dom';
@@ -29,6 +30,7 @@ export default function SignInPage() {
     register,
     formState: { errors, isSubmitting },
     handleSubmit,
+    handleGithubLogin,
   } = useLogin();
 
   if (userId) {
@@ -133,6 +135,11 @@ export default function SignInPage() {
                   </Stack>
                 </>
               )}
+              <Stack spacing={10}>
+                <Button onClick={handleGithubLogin} rightIcon={<FaGithub />} ri>
+                  Continue with Github
+                </Button>
+              </Stack>
             </Stack>
           </form>
         </Box>

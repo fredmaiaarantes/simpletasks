@@ -33,6 +33,11 @@ https://www.loom.com/share/50b9e1a513904b138fb772a332facbfb
 meteor npm install
 ```
 
+### Configure GitHub Login (Optional)
+
+Create an OAuth App on [GitHub](https://github.com/settings/developers) by following this [tutorial](https://blog.meteor.com/meteor-social-login-with-github-1b48d04c332) and checking our [docs](https://v3-docs.meteor.com/api/accounts.html#Meteor-loginWith%3CExternalService%3E).
+Then, replace the GitHub `clientId` and `secret` in your `private/settings.json` file with your own.
+
 ### Running
 
 ```bash

@@ -5,7 +5,8 @@ npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 
-private
+private/settings.prod.json
+private/settings.dev.json
 
 # Runtime data
 pids

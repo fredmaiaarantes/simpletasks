@@ -54,6 +54,18 @@ export function useLogin() {
     }
   };
 
+  const handleGithubLogin = () => {
+    Meteor.loginWithGithub(
+      {
+        requestPermissions: ['user'],
+        loginStyle: 'popup',
+      },
+      (error) => {
+        handleError(error);
+      }
+    );
+  };
+
   return {
     loginOrCreateUser,
     isSignup,
@@ -63,5 +75,6 @@ export function useLogin() {
     handleSubmit,
     register,
     formState,
+    handleGithubLogin,
   };
 }
