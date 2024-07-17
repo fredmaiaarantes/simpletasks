@@ -1,5 +1,5 @@
 # Charm - Simple Tasks
-Running with **Meteor 3.0** and Node 20.
+Running with **Meteor.js 3.0** and Node 20.
 Built with the CHARM (Chakra-UI, React, Meteor) stack.
 
 Deployed to Galaxy: https://simpletasks.meteorapp.com/

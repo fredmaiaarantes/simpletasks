@@ -29,5 +29,5 @@ react-meteor-data@3.0.0
 montiapm:agent
 zodern:standard-minifier-js
 accounts-github@1.5.1
-service-configuration@1.3.2
-ddp-rate-limiter@1.2.1
+service-configuration@1.3.5
+ddp-rate-limiter@1.2.2
