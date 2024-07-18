@@ -12,6 +12,7 @@ import React, { Suspense } from 'react';
 import { TaskForm } from './components/task-form';
 import { TaskItem } from './components/task-item';
 import { useTasks } from './hooks/use-tasks';
+import '/api/tasks/tasks.methods';
 
 export default function TasksPage() {
   const { hideDone, setHideDone, tasks, count, pendingCount } = useTasks();

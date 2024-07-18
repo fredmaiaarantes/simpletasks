@@ -17,25 +17,24 @@ Migrations.add({
   version: 2,
   name: 'Add a few sample tasks.',
   async up() {
-    const createdAt = new Date();
     const user = await Accounts.findUserByUsername('fredmaia');
     await Tasks.insertAsync({
       description: 'Install Node@20',
       done: false,
       userId: user._id,
-      createdAt,
+      createdAt: new Date(2024, 1, 1),
     });
     await Tasks.insertAsync({
-      description: 'Install MeteorJS',
+      description: 'Install Meteor.js 3.0',
       done: false,
       userId: user._id,
-      createdAt,
+      createdAt: new Date(2024, 1, 2),
     });
     await Tasks.insertAsync({
       description: 'Clone this repository',
       done: false,
       userId: user._id,
-      createdAt,
+      createdAt: new Date(2024, 1, 3),
     });
   },
 });

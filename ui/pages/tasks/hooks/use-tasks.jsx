@@ -11,7 +11,7 @@ export function useTasks() {
 
   const tasks = useFind(
     Tasks,
-    [filter, { sort: { createdAt: -1 } }],
+    [filter, { sort: { createdAt: -1, description: -1 } }],
     [hideDone]
   );
   const count = useFind(Tasks, [{ userId }]).length;
