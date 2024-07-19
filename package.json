@@ -10,7 +10,7 @@
     "visualize": "meteor --production --extra-packages bundle-visualizer"
   },
   "dependencies": {
-    "@babel/runtime": "^7.24.7",
+    "@babel/runtime": "^7.24.8",
     "@chakra-ui/icons": "^2.1.1",
     "@chakra-ui/react": "^2.8.2",
     "@emotion/react": "^11.11.4",
@@ -24,8 +24,8 @@
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
     "react-helmet": "^6.1.0",
-    "react-hook-form": "^7.52.0",
-    "react-router-dom": "^6.23.1",
+    "react-hook-form": "^7.52.1",
+    "react-router-dom": "^6.25.1",
     "zod": "^3.23.8"
   },
   "devDependencies": {
