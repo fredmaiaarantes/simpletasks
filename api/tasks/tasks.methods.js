@@ -10,9 +10,9 @@ import { Tasks } from './tasks';
  @function insertTask
  @param {Object} taskData - The task data.
  @param {string} taskData.description - The description of the task.
- @returns {Promise<string>} - The ID of the inserted task.
+ @returns {string} - The ID of the inserted task.
  */
-async function insertTask({ description }) {
+function insertTask({ description }) {
   check(description, String);
   checkLoggedIn();
   const task = {
@@ -21,7 +21,7 @@ async function insertTask({ description }) {
     userId: Meteor.userId(),
     createdAt: new Date(),
   };
-  return Tasks.insertAsync(task);
+  return Tasks.insert(task);
 }
 
 /**
@@ -30,12 +30,12 @@ async function insertTask({ description }) {
  @function removeTask
  @param {Object} taskData - The task data.
  @param {string} taskData.taskId - The ID of the task to remove.
- @returns {Promise<number>}
+ @returns {number}
  */
-async function removeTask({ taskId }) {
+function removeTask({ taskId }) {
   check(taskId, String);
-  await checkTaskOwner({ taskId });
-  return Tasks.removeAsync(taskId);
+  checkTaskOwner({ taskId });
+  return Tasks.remove(taskId);
 }
 
 /**
@@ -44,13 +44,13 @@ async function removeTask({ taskId }) {
  @function toggleTaskDone
  @param {Object} taskData - The task data.
  @param {string} taskData.taskId - The ID of the task to toggle.
- @returns {Promise<number>}
+ @returns {number}
  */
-async function toggleTaskDone({ taskId }) {
+function toggleTaskDone({ taskId }) {
   check(taskId, String);
-  await checkTaskOwner({ taskId });
-  const task = await Tasks.findOneAsync(taskId);
-  return Tasks.updateAsync({ _id: taskId }, { $set: { done: !task.done } });
+  checkTaskOwner({ taskId });
+  const task = Tasks.findOne(taskId);
+  return Tasks.update({ _id: taskId }, { $set: { done: !task.done } });
 }
 
 Meteor.methods({ insertTask, removeTask, toggleTaskDone });

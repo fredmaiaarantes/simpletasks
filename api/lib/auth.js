@@ -17,10 +17,10 @@ export function checkLoggedIn() {
  * @param {{ taskId: String }}
  * @throws Will throw an error if user is not logged in or is not the task owner.
  */
-export async function checkTaskOwner({ taskId }) {
+export function checkTaskOwner({ taskId }) {
   check(taskId, String);
   checkLoggedIn();
-  const task = await Tasks.findOneAsync({
+  const task = Tasks.findOne({
     _id: taskId,
     userId: Meteor.userId(),
   });

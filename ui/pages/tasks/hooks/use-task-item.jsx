@@ -4,13 +4,13 @@ import { Meteor } from 'meteor/meteor';
 export function useTaskItem() {
   const toast = useToast();
 
-  async function onMarkAsDone(_id) {
-    await Meteor.callAsync('toggleTaskDone', { taskId: _id });
+  function onMarkAsDone(_id) {
+    Meteor.call('toggleTaskDone', { taskId: _id });
   }
 
-  async function onDelete(_id) {
+  function onDelete(_id) {
     try {
-      await Meteor.callAsync('removeTask', { taskId: _id });
+      Meteor.call('removeTask', { taskId: _id });
       toast({
         title: 'Task removed.',
         status: 'success',
