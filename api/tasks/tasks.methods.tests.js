@@ -23,7 +23,7 @@ if (Meteor.isServer) {
       });
 
       it('can delete owned task', () => {
-        Meteor.call('removeTask', { taskId });
+        await Meteor.callAsync('removeTask', { taskId });
 
         assert.equal(Tasks.find().count(), 0);
       });
@@ -31,7 +31,7 @@ if (Meteor.isServer) {
       it("can't delete task if not authenticated", () => {
         mockLoggedUserId(null);
         try {
-          Meteor.call('removeTask', { taskId });
+          await Meteor.callAsync('removeTask', { taskId });
         } catch (error) {
           expect(error).to.be.instanceof(Error);
           expect(error.reason).to.be.equal('Not authorized.');
@@ -42,7 +42,7 @@ if (Meteor.isServer) {
       it("can't delete task from another owner", () => {
         mockLoggedUserId(Random.id());
         try {
-          Meteor.call('removeTask', { taskId });
+          await Meteor.callAsync('removeTask', { taskId });
         } catch (error) {
           expect(error).to.be.instanceof(Error);
           expect(error.reason).to.be.equal('Access denied.');
@@ -52,7 +52,7 @@ if (Meteor.isServer) {
 
       it('can change the status of a task', () => {
         const originalTask = Tasks.findOne(taskId);
-        Meteor.call('toggleTaskDone', { taskId });
+        await Meteor.callAsync('toggleTaskDone', { taskId });
 
         const updatedTask = Tasks.findOne(taskId);
         assert.notEqual(updatedTask.done, originalTask.done);
@@ -63,7 +63,7 @@ if (Meteor.isServer) {
         const originalTask = Tasks.findOne(taskId);
 
         try {
-          Meteor.call('toggleTaskDone', { taskId });
+          await Meteor.callAsync('toggleTaskDone', { taskId });
         } catch (error) {
           expect(error).to.be.instanceof(Error);
           expect(error.reason).to.be.equal('Access denied.');
@@ -74,7 +74,7 @@ if (Meteor.isServer) {
 
       it('can insert new tasks', () => {
         const description = 'New Task';
-        Meteor.call('insertTask', { description });
+        await Meteor.callAsync('insertTask', { description });
 
         const task = Tasks.findOne({ description });
         assert.isNotNull(task);
@@ -85,7 +85,7 @@ if (Meteor.isServer) {
         mockLoggedUserId(null);
         const description = 'New Task';
         try {
-          Meteor.call('insertTask', { description });
+          await Meteor.callAsync('insertTask', { description });
         } catch (error) {
           expect(error).to.be.instanceof(Error);
           expect(error.reason).to.be.equal('Not authorized.');
