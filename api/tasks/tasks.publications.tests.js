@@ -15,32 +15,32 @@ describe('Tasks', () => {
       userId,
     };
 
-    beforeEach(async () => {
+    beforeEach(() => {
       mockLoggedUserId(userId);
-      await Tasks.removeAsync({});
-      await Tasks.insertAsync(originalTask);
+      Tasks.remove({});
+      Tasks.insert(originalTask);
     });
 
-    it('should return tasks from the authenticated user', async () => {
+    it('should return tasks from the authenticated user', () => {
       const publication = getMeteorPublication('tasksByLoggedUser');
-      const tasks = await publication.fetchAsync();
+      const tasks = publication.fetch();
 
       expect(tasks.length).to.be.equal(1);
       expect(tasks[0].description).to.be.equal(originalTask.description);
     });
 
-    it('should not return any task to the user who does not have any', async () => {
+    it('should not return any task to the user who does not have any', () => {
       mockLoggedUserId(Random.id());
       const publication = getMeteorPublication('tasksByLoggedUser');
-      const tasks = await publication.fetchAsync();
+      const tasks = publication.fetch();
 
       expect(tasks.length).to.be.equal(0);
     });
 
-    it('should not return any task if not authenticated', async () => {
+    it('should not return any task if not authenticated', () => {
       mockLoggedUserId(null);
       const publication = getMeteorPublication('tasksByLoggedUser');
-      const tasks = await publication.fetchAsync();
+      const tasks = publication.fetch();
 
       expect(tasks.length).to.be.equal(0);
     });

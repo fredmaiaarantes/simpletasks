@@ -5,8 +5,8 @@ import { Tasks } from '../tasks/tasks';
 Migrations.add({
   version: 1,
   name: 'Add a seed username and password.',
-  async up() {
-    await Accounts.createUserAsync({
+  up() {
+    Accounts.createUser({
       username: 'fredmaia',
       password: 'abc123',
     });
@@ -16,21 +16,21 @@ Migrations.add({
 Migrations.add({
   version: 2,
   name: 'Add a few sample tasks.',
-  async up() {
-    const user = await Accounts.findUserByUsername('fredmaia');
-    await Tasks.insertAsync({
-      description: 'Install Node@20',
+  up() {
+    const user = Accounts.findUserByUsername('fredmaia');
+    Tasks.insert({
+      description: 'Install Node@14',
       done: false,
       userId: user._id,
       createdAt: new Date(2024, 1, 1),
     });
-    await Tasks.insertAsync({
-      description: 'Install Meteor.js 3.0',
+    Tasks.insert({
+      description: 'Install Meteor.js 2.0',
       done: false,
       userId: user._id,
       createdAt: new Date(2024, 1, 2),
     });
-    await Tasks.insertAsync({
+    Tasks.insert({
       description: 'Clone this repository',
       done: false,
       userId: user._id,
