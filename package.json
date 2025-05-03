@@ -4,10 +4,14 @@
   "version": "1.0.3",
   "private": true,
   "scripts": {
-    "start": "meteor --exclude-archs web.browser.legacy,web.cordova --settings private/settings.json",
+    "start": "meteor --settings private/settings.dev.json",
     "test": "meteor test --once --driver-package meteortesting:mocha",
     "check": "npx @biomejs/biome check --write ./**/*.{js,jsx}",
-    "visualize": "meteor --production --extra-packages bundle-visualizer"
+    "visualize": "meteor --production --extra-packages bundle-visualizer",
+    "profile": "meteor profile --exclude-archs web.browser.legacy,web.cordova",
+    "test-e2e": "playwright test",
+    "test-e2e-headed": "playwright test --headed",
+    "test-e2e-report": "npx playwright show-report"
   },
   "dependencies": {
     "@babel/runtime": "^7.24.8",
@@ -30,18 +34,23 @@
   },
   "devDependencies": {
     "@biomejs/biome": "1.8.3",
+    "@playwright/test": "^1.52.0",
     "@types/meteor": "^2.9.8",
     "@types/mocha": "^9.1.1",
+    "@types/node": "^22.15.3",
     "@types/react": "^18.3.3",
     "@types/react-dom": "^18.3.0",
-    "chai": "^4.4.1"
+    "chai": "^4.4.1",
+    "dotenv": "^16.5.0"
   },
   "meteor": {
     "mainModule": {
       "client": "ui/main.jsx",
       "server": "api/main.js"
     },
-    "testModule": "tests/main.js"
+    "testModule": "tests/main.js",
+    "modernWebArchsOnly": true,
+    "modernTranspiler": true
   },
   "husky": {
     "hooks": {

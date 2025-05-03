@@ -1,0 +1,6 @@
+# Playwright files and directories
+playwright-report/
+test-results/
+e2e/
+node_modules/@playwright/
+node_modules/playwright/ 
