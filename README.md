@@ -1,5 +1,5 @@
 # Charm - Simple Tasks
-Running with **Meteor.js 3.0** and Node 20.
+Running with **Meteor.js 3** and Node 22.
 Built with the CHARM (Chakra-UI, React, Meteor) stack.
 
 Deployed to Galaxy: https://simpletasks.meteorapp.com/
@@ -13,9 +13,11 @@ The main goal is to make development as quick and efficient as possible. To achi
 -   [React Hook Form ](https://react-hook-form.com/)- Performant, flexible, and extensible forms with easy-to-use validation.
 -   [MongoDB ](https://www.mongodb.com/)- A NoSQL database that is really powerful for prototyping and creating ready-to-use apps out of the box.
 -   [Galaxy ](https://meteor.com/cloud)-  A cloud provider that makes deploying a server with a database included painless.
+-   [Playwright ](https://playwright.dev/)- Reliable end-to-end testing.
 
 ### Features:
-- Sign In / Sign Up with Username and GitHub
+- Sign In / Sign Up with Username and Password
+- Sign In / Sign Up with with GitHub
 - List Tasks by logged-in user
 - Add Tasks
 - Remove Tasks
@@ -59,6 +61,12 @@ meteor reset --db
 ### Deploy to Galaxy with free MongoDB
 ```bash
 meteor deploy <select a subdomain>.meteorapp.com --free --mongo
+```
+
+### Run e2e tests
+
+```bash
+meteor npm run test-e2e-headed
 ```
 
 ## Main Meteor packages
