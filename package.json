@@ -44,14 +44,12 @@
     "dotenv": "^16.5.0"
   },
   "meteor": {
-    "modern": true,
     "mainModule": {
       "client": "ui/main.jsx",
       "server": "api/main.js"
     },
     "testModule": "tests/main.js",
-    "modernWebArchsOnly": true,
-    "modernTranspiler": true
+    "modern": true
   },
   "husky": {
     "hooks": {
