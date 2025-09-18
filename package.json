@@ -13,6 +13,14 @@
     "test-e2e-headed": "playwright test --headed",
     "test-e2e-report": "npx playwright show-report"
   },
+  "meteor": {
+    "mainModule": {
+      "client": "ui/main.jsx",
+      "server": "api/main.js"
+    },
+    "testModule": "tests/main.js",
+    "modern": true
+  },
   "dependencies": {
     "@babel/runtime": "^7.24.8",
     "@chakra-ui/icons": "^2.1.1",
@@ -35,22 +43,20 @@
   },
   "devDependencies": {
     "@biomejs/biome": "1.8.3",
+    "@meteorjs/rspack": "^0.0.46",
     "@playwright/test": "^1.52.0",
+    "@rsdoctor/rspack-plugin": "^1.2.3",
+    "@rspack/cli": "^1.5.3",
+    "@rspack/core": "^1.5.3",
+    "@rspack/plugin-react-refresh": "^1.4.3",
     "@types/meteor": "^2.9.8",
     "@types/mocha": "^9.1.1",
     "@types/node": "^22.15.3",
     "@types/react": "^18.3.3",
     "@types/react-dom": "^18.3.0",
     "chai": "^4.4.1",
-    "dotenv": "^16.5.0"
-  },
-  "meteor": {
-    "mainModule": {
-      "client": "ui/main.jsx",
-      "server": "api/main.js"
-    },
-    "testModule": "tests/main.js",
-    "modern": true
+    "dotenv": "^16.5.0",
+    "react-refresh": "^0.17.0"
   },
   "husky": {
     "hooks": {
