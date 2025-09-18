@@ -1,8 +1,8 @@
 # Charm - Simple Tasks
-Running with **Meteor.js 3** and Node 22.
+Running with **Meteor.js 3.4 Beta with RSPack** and Node 22.
 Built with the CHARM (Chakra-UI, React, Meteor) stack.
 
-Deployed to Galaxy: https://simpletasks.meteorapp.com/
+Deployed to Galaxy: https://simpletasks2.meteorapp.com/
 
 ## What and why this stack?
 The main goal is to make development as quick and efficient as possible. To achieve this, I have selected these technologies:
@@ -12,7 +12,7 @@ The main goal is to make development as quick and efficient as possible. To achi
 -   [Chakra UI ](https://chakra-ui.com/)- A React library focused on simplicity and productivity.
 -   [React Hook Form ](https://react-hook-form.com/)- Performant, flexible, and extensible forms with easy-to-use validation.
 -   [MongoDB ](https://www.mongodb.com/)- A NoSQL database that is really powerful for prototyping and creating ready-to-use apps out of the box.
--   [Galaxy ](https://meteor.com/cloud)-  A cloud provider that makes deploying a server with a database included painless.
+-   [Galaxy ](https://galaxycloud.app)-  A cloud provider that makes deploying a server with a database included painless.
 -   [Playwright ](https://playwright.dev/)- Reliable end-to-end testing.
 
 ### Features:
