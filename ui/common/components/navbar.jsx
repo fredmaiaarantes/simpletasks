@@ -5,26 +5,43 @@ import {
   Flex,
   Stack,
   Text,
-  useColorMode,
-  useColorModeValue,
 } from '@chakra-ui/react';
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { Logout } from './logout';
 
 export function Navbar() {
-  const { colorMode, toggleColorMode } = useColorMode();
+  const [colorMode, setColorMode] = useState('light');
+  
+  useEffect(() => {
+    // Load saved color mode from localStorage
+    const savedColorMode = localStorage.getItem('chakra-ui-color-mode');
+    if (savedColorMode) {
+      setColorMode(savedColorMode);
+    }
+  }, []);
+  
+  const toggleColorMode = () => {
+    const newColorMode = colorMode === 'light' ? 'dark' : 'light';
+    setColorMode(newColorMode);
+    localStorage.setItem('chakra-ui-color-mode', newColorMode);
+    // Update the document class for CSS variables
+    document.documentElement.setAttribute('data-theme', newColorMode);
+  };
 
   return (
     <Box>
       <Flex
-        bg={useColorModeValue('white', 'gray.800')}
-        color={useColorModeValue('gray.600', 'white')}
+        bg="white"
+        _dark={{ bg: 'gray.800' }}
+        color="gray.600"
+        // _dark={{ color: 'white' }}
         minH="60px"
         py={{ base: 2 }}
         px={{ base: 4 }}
         borderBottom={1}
         borderStyle="solid"
-        borderColor={useColorModeValue('gray.200', 'gray.900')}
+        borderColor="gray.200"
+        // _dark={{ borderColor: 'gray.900' }}
         align="center"
       >
         <Flex flex={{ base: 1 }} justify="start">
@@ -44,7 +61,7 @@ export function Navbar() {
           flex={{ base: 1, md: 0 }}
           justify="flex-end"
           direction="row"
-          spacing={6}
+          gap={6}
         >
           <Button
             onClick={toggleColorMode}

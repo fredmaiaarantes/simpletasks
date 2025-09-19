@@ -1,12 +1,26 @@
-import { ChakraProvider, ColorModeScript, extendTheme } from '@chakra-ui/react';
+import { ChakraProvider, createSystem, defaultConfig } from "@chakra-ui/react";
+import { ColorModeProvider } from "./color-mode";
+
 import React from 'react';
 
-const customTheme = extendTheme({
-  config: {
-    initialColorMode: 'dark',
-    useSystemColorMode: false,
+export const defaultSystem = createSystem(defaultConfig, {
+  theme: {
+    tokens: {
+      fonts: {
+        heading: { value: `'Figtree', sans-serif` },
+        body: { value: `'Figtree', sans-serif` },
+      },
+    },
   },
-});
+})
+
+function Provider(props) {
+  return (
+    <ChakraProvider value={defaultSystem}>
+      <ColorModeProvider {...props} />
+    </ChakraProvider>
+  )
+}
 
 const toastOptions = {
   defaultOptions: {
@@ -19,10 +33,9 @@ const toastOptions = {
 export function UIProvider({ children }) {
   return (
     <>
-      <ColorModeScript initialColorMode={customTheme.config.initialColorMode} />
-      <ChakraProvider theme={customTheme} toastOptions={toastOptions}>
+      <Provider>
         {children}
-      </ChakraProvider>
+      </Provider>
     </>
   );
 }
