@@ -1,10 +1,12 @@
 # Charm - Simple Tasks
-Running with **Meteor.js 3.4 Beta with RSPack** and Node 22.
+
+Running with **Meteor.js 3.4 with Rspack** and Node 22.
 Built with the CHARM (Chakra-UI, React, Meteor) stack.
 
 Deployed to Galaxy: https://simpletasks2.meteorapp.com/
 
 ## What and why this stack?
+
 The main goal is to make development as quick and efficient as possible. To achieve this, I have selected these technologies:
 
 -   [Meteor ](https://meteor.com/)- A full-stack framework focused on productivity that uses RPCs and Sockets for reactivity.
@@ -16,6 +18,7 @@ The main goal is to make development as quick and efficient as possible. To achi
 -   [Playwright ](https://playwright.dev/)- Reliable end-to-end testing.
 
 ### Features:
+
 - Sign In / Sign Up with Username and Password
 - Sign In / Sign Up with with GitHub
 - List Tasks by logged-in user
@@ -208,4 +211,3 @@ For our UI components, we have chosen Chakra UI because of its productivity that
 We have included Dark and Light modes. It can be seen those configs in `ui/common/components/ui-provider.jsx`.
 
 You can see Chakra-UI's full component list on [their website](https://chakra-ui.com/getting-started).
-

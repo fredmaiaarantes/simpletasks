@@ -6,28 +6,28 @@
 
 meteor-base@1.5.2             # Packages every Meteor app needs to have
 mobile-experience@1.1.2       # Packages for a great mobile UX
-mongo@2.2.0-beta340.12                   # The database Meteor supports right now
+mongo@2.2.0                   # The database Meteor supports right now
 reactive-var@1.0.13            # Reactive variable for tracker
 
-standard-minifier-css@1.9.3   # CSS minifier run for production mode
+standard-minifier-css@1.10.0   # CSS minifier run for production mode
 es5-shim@4.8.1                # ECMAScript 5 compatibility for older browsers
-ecmascript@0.17.0-beta340.12              # Enable ECMAScript2015+ syntax in app code
-typescript@5.7.0-beta340.12              # Enable TypeScript syntax in .ts and .tsx modules
-shell-server@0.7.0-beta340.12            # Server-side component of the `meteor shell` command
+ecmascript@0.17.0              # Enable ECMAScript2015+ syntax in app code
+typescript@5.9.3              # Enable TypeScript syntax in .ts and .tsx modules
+shell-server@0.7.0            # Server-side component of the `meteor shell` command
 hot-module-replacement@0.5.4  # Update client in development without reloading the page
 
-static-html@1.4.0             # Define static page content in .html files
+static-html@1.5.0             # Define static page content in .html files
 dev-error-overlay@0.1.3
 
-accounts-password@3.2.2-beta340.12
+accounts-password@3.2.2
 force-ssl@1.1.1
 meteortesting:mocha@3.2.0
 jam:easy-schema@1.4.0
 quave:migrations
 react-meteor-accounts@1.0.3
-react-meteor-data@3.0.0
+react-meteor-data@4.0.1
 zodern:standard-minifier-js
 accounts-github@1.5.1
 service-configuration@1.3.5
 ddp-rate-limiter@1.2.2
-rspack@1.0.0-beta340.12
+rspack@1.0.0
