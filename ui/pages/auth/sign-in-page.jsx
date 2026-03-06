@@ -16,7 +16,7 @@ import { FaGithub } from '@react-icons/all-files/fa/FaGithub';
 import { useUserId } from 'meteor/react-meteor-accounts';
 import React from 'react';
 import { Navigate } from 'react-router-dom';
-import { routes } from '../../routes';
+import { routes } from '../../route-paths';
 import { useLogin } from './hooks/use-login';
 
 export default function SignInPage() {

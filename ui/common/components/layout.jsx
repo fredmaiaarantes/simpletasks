@@ -2,7 +2,7 @@ import { Box } from '@chakra-ui/react';
 import { useUserId } from 'meteor/react-meteor-accounts';
 import React from 'react';
 import { Navigate } from 'react-router-dom';
-import { routes } from '../../routes';
+import { routes } from '../../route-paths';
 import { Footer } from './footer';
 import { Navbar } from './navbar';
 
