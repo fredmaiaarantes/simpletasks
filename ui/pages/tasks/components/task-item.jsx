@@ -25,12 +25,10 @@ export const TaskItem = memo(({ task }) => {
   const { onDelete, onMarkAsDone } = useTaskItem();
 
   return (
-    <HStack mt={4} align="start">
-      <Box flex={1} minW={0}>
+    <HStack mt={4}>
+      <Box w="80%">
         <Checkbox
           colorScheme="green"
-          maxW="full"
-          alignItems="start"
           isChecked={task.done}
           onChange={() => onMarkAsDone(task._id)}
         >
@@ -41,17 +39,14 @@ export const TaskItem = memo(({ task }) => {
             openDelay={600}
           >
             <span
-              style={{
-                textDecoration: task.done ? 'line-through' : 'none',
-                overflowWrap: 'anywhere',
-              }}
+              style={{ textDecoration: task.done ? 'line-through' : 'none' }}
             >
               {task.description}
             </span>
           </Tooltip>
         </Checkbox>
       </Box>
-      <Stack flexShrink={0} justify="flex-end" direction="row">
+      <Stack w="20%" justify="flex-end" direction="row">
         <Button
           colorScheme="red"
           variant="outline"

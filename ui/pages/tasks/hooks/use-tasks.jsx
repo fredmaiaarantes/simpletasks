@@ -7,15 +7,15 @@ export function useTasks() {
   useSubscribe('tasksByLoggedUser');
   const userId = useUserId();
   const [hideDone, setHideDone] = useState(false);
-  const allTasks = useFind(
+  const filter = hideDone ? { done: { $ne: true }, userId } : { userId };
+
+  const tasks = useFind(
     Tasks,
-    [{ userId }, { sort: { createdAt: -1, description: -1 } }],
-    [userId]
+    [filter, { sort: { createdAt: -1, description: -1 } }],
+    [hideDone]
   );
-  const pendingTasks = allTasks.filter((task) => !task.done);
-  const tasks = hideDone ? pendingTasks : allTasks;
-  const count = allTasks.length;
-  const pendingCount = pendingTasks.length;
+  const count = useFind(Tasks, [{ userId }]).length;
+  const pendingCount = useFind(Tasks, [{ done: { $ne: true }, userId }]).length;
 
   return {
     hideDone,

@@ -4,7 +4,7 @@
   "version": "1.0.3",
   "private": true,
   "scripts": {
-    "start": "meteor run",
+    "start": "meteor --settings private/settings.dev.json",
     "test": "meteor test --once --driver-package meteortesting:mocha",
     "check": "npx @biomejs/biome check --write ./**/*.{js,jsx}",
     "visualize": "meteor --production --extra-packages bundle-visualizer",
@@ -18,9 +18,7 @@
       "client": "ui/main.jsx",
       "server": "api/main.js"
     },
-    "testModule": {
-      "server": "tests/main.js"
-    },
+    "testModule": "tests/main.js",
     "modern": true
   },
   "dependencies": {
