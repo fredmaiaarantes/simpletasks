@@ -41,16 +41,17 @@ export function useLogin() {
     navigate('/tasks');
   };
 
-  const loginOrCreateUser = (values) => {
+  const loginOrCreateUser = async (values) => {
     const { username, password } = values;
-    if (isSignup) {
-      Accounts.createUser({ username, password }, (error) => {
-        handleError(error);
-      });
-    } else {
-      Meteor.loginWithPassword(username, password, (error) => {
-        handleError(error);
-      });
+    try {
+      if (isSignup) {
+        await Accounts.createUserAsync({ username, password });
+      } else {
+        await Meteor.loginWithPasswordAsync(username, password);
+      }
+      handleError();
+    } catch (error) {
+      handleError(error);
     }
   };
 

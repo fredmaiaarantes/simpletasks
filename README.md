@@ -1,6 +1,6 @@
 # Charm - Simple Tasks
 
-Running with **Meteor.js 3.4 with Rspack** and Node 22.
+Running with **Meteor.js 3.5.2 with Rspack** and Meteor's bundled Node 24.15.0.
 Built with the CHARM (Chakra-UI, React, Meteor) stack.
 
 Deployed to Galaxy: https://simpletasks2.meteorapp.com/
@@ -35,13 +35,13 @@ https://www.loom.com/share/50b9e1a513904b138fb772a332facbfb
 ### Install dependencies
 
 ```bash
-meteor npm install
+meteor npm ci
 ```
 
 ### Configure GitHub Login (Optional)
 
 Create an OAuth App on [GitHub](https://github.com/settings/developers) by following this [tutorial](https://blog.meteor.com/meteor-social-login-with-github-1b48d04c332) and checking our [docs](https://v3-docs.meteor.com/api/accounts.html#Meteor-loginWith%3CExternalService%3E).
-Then, replace the GitHub `clientId` and `secret` in your `private/settings.json` file with your own.
+Copy `private/settings.json` to `private/settings.dev.json`, then replace the GitHub `clientId` and `secret` with your own and remove any deployment-specific configuration you do not need. Start with `meteor npm start -- --settings private/settings.dev.json` to load these optional settings.
 
 ### Running
 
@@ -49,11 +49,17 @@ Then, replace the GitHub `clientId` and `secret` in your `private/settings.json`
 meteor npm run start
 ```
 
+Open http://localhost:3000. No settings file is required for local username/password login. A fresh local database includes the demo account `fredmaia` / `abc123`; you can also create an account from the sign-in page.
+
+Use `meteor npm` for dependency commands so native modules use the Node version bundled with the pinned Meteor release.
+
 ### Run tests
 
 ```bash
 meteor npm run test
 ```
+
+The Mocha suite runs the server method and publication tests against an isolated test database. If the app is already running, use `meteor npm test -- --port 3100`.
 
 ### Cleaning up your local DB
 
@@ -69,8 +75,15 @@ meteor deploy <select a subdomain>.meteorapp.com --free --mongo
 ### Run e2e tests
 
 ```bash
+meteor npx playwright install chromium firefox
+meteor npm run test-e2e
+# To watch the tests in a browser:
 meteor npm run test-e2e-headed
 ```
+
+Playwright starts the app automatically, or reuses a local server on port 3000. It checks login, signup, task operations, persistence, live updates between tabs, and narrow layouts in Chromium, Firefox, and mobile Chromium. Task tests create separate local accounts.
+
+To check the production bundle locally, start `meteor npm start -- --production`, then run the e2e tests from another terminal.
 
 ## Main Meteor packages
 - react-meteor-data

@@ -32,6 +32,8 @@ export default function SignInPage() {
     handleSubmit,
     handleGithubLogin,
   } = useLogin();
+  const subtitleColor = useColorModeValue('gray.600', 'gray.400');
+  const formBackground = useColorModeValue('white', 'gray.700');
 
   if (userId) {
     return <Navigate to={routes.tasks} />;
@@ -39,7 +41,7 @@ export default function SignInPage() {
 
   return (
     <Flex align="center" justify="center">
-      <Stack spacing={8} mx="auto" maxW="lg" py={12} px={6}>
+      <Stack spacing={8} mx="auto" w="full" maxW="lg" minW={0} py={12} px={6}>
         <Stack align="center">
           <Heading
             fontSize="4xl"
@@ -48,15 +50,15 @@ export default function SignInPage() {
           >
             Sign in to your account
           </Heading>
-          <Text fontSize="lg" color={useColorModeValue('gray.600', 'gray.400')}>
+          <Text fontSize="lg" color={subtitleColor}>
             to start creating your simple tasks
           </Text>
         </Stack>
         <Box
           rounded="lg"
-          bg={useColorModeValue('white', 'gray.700')}
+          bg={formBackground}
           boxShadow="lg"
-          p={8}
+          p={{ base: 4, sm: 8 }}
         >
           <form onSubmit={handleSubmit(loginOrCreateUser)}>
             <Stack spacing={4}>
@@ -136,7 +138,7 @@ export default function SignInPage() {
                 </>
               )}
               <Stack spacing={10}>
-                <Button onClick={handleGithubLogin} rightIcon={<FaGithub />} ri>
+                <Button onClick={handleGithubLogin} rightIcon={<FaGithub />}>
                   Continue with Github
                 </Button>
               </Stack>
