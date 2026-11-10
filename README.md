@@ -1,6 +1,6 @@
 # Charm - Simple Tasks
 
-Running with **Meteor.js 3.4 with Rspack** and Node 22.
+Running with **Meteor.js 3.6 with Rspack 2** and Node 26.
 Built with the CHARM (Chakra-UI, React, Meteor) stack.
 
 Deployed to Galaxy: https://simpletasks2.meteorapp.com/
@@ -38,10 +38,16 @@ https://www.loom.com/share/50b9e1a513904b138fb772a332facbfb
 meteor npm install
 ```
 
+Create your local development settings:
+
+```bash
+cp private/settings.json private/settings.dev.json
+```
+
 ### Configure GitHub Login (Optional)
 
 Create an OAuth App on [GitHub](https://github.com/settings/developers) by following this [tutorial](https://blog.meteor.com/meteor-social-login-with-github-1b48d04c332) and checking our [docs](https://v3-docs.meteor.com/api/accounts.html#Meteor-loginWith%3CExternalService%3E).
-Then, replace the GitHub `clientId` and `secret` in your `private/settings.json` file with your own.
+Then, replace the GitHub `clientId` and `secret` in your `private/settings.dev.json` file with your own.
 
 ### Running
 
@@ -67,6 +73,13 @@ meteor deploy <select a subdomain>.meteorapp.com --free --mongo
 ```
 
 ### Run e2e tests
+
+```bash
+meteor npx playwright install chromium firefox
+meteor npm run test-e2e
+```
+
+To watch the tests run in a browser:
 
 ```bash
 meteor npm run test-e2e-headed

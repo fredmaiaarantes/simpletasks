@@ -29,7 +29,7 @@
     "@emotion/styled": "^11.14.1",
     "@hookform/resolvers": "^2.9.11",
     "@react-icons/all-files": "^4.1.0",
-    "@swc/helpers": "^0.5.17",
+    "@swc/helpers": "^0.5.23",
     "bcrypt": "^5.1.1",
     "framer-motion": "^6.5.1",
     "history": "^5.3.0",
@@ -43,12 +43,14 @@
   },
   "devDependencies": {
     "@biomejs/biome": "1.8.3",
-    "@meteorjs/rspack": "^2.0.1",
-    "@playwright/test": "^1.52.0",
-    "@rsdoctor/rspack-plugin": "^1.5.7",
-    "@rspack/cli": "^1.7.1",
-    "@rspack/core": "^1.7.1",
-    "@rspack/plugin-react-refresh": "^1.4.3",
+    "@meteorjs/rspack": "^3.0.0",
+    "@playwright/test": "^1.65.0",
+    "@rsdoctor/rspack-plugin": "^1.6.4",
+    "@rspack/cli": "^2.2.7",
+    "@rspack/core": "^2.2.7",
+    "@rspack/dev-server": "^2.2.1",
+    "@rspack/plugin-react-refresh": "^2.0.2",
+    "@swc/core": "^1.16.2",
     "@types/meteor": "^2.9.8",
     "@types/mocha": "^9.1.1",
     "@types/node": "^22.15.3",
@@ -56,7 +58,7 @@
     "@types/react-dom": "^18.3.0",
     "chai": "^4.4.1",
     "dotenv": "^16.5.0",
-    "react-refresh": "^0.17.0"
+    "react-refresh": "^0.19.0"
   },
   "husky": {
     "hooks": {
